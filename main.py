@@ -113,8 +113,7 @@ async def show_all_clan_members(ctx):
 @commands.has_role('DevOps')
 @bot.command(name='rmli')
 async def remove_link(ctx, brawlhalla_id):
-    msg = await delete_link_from_data(brawlhalla_id=brawlhalla_id)
-    await ctx.send('this doesnt work yet')
+    embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id, bot=bot, ctx=ctx)
 
 
 @remove_link.error
