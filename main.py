@@ -31,7 +31,8 @@ with open('./data_link.json') as data:
     link_data = json.load(data)
 
 intents = discord.Intents().all()
-bot = commands.Bot(command_prefix=['qs', 'Qs'], intents=intents)
+bot = commands.Bot(command_prefix=['qs', 'Qs'],
+                   intents=intents, help_command=None)
 embed_color = 0x790eab
 # TO DO
 # delete link command
@@ -226,6 +227,11 @@ async def missing_question(ctx, error):
 @bot.command(name='say')
 async def add_discord_id(ctx, arg):
     await ctx.channel.send(arg)
+
+
+@bot.command(name='help')
+async def help(ctx):
+    await ctx.channel.send('Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy')
 
 
 keep_alive()
