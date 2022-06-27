@@ -47,6 +47,9 @@ embed_color = 0x790eab
 @commands.has_role('DevOps')
 @bot.command(name='status', aliases=['tatus'])
 async def get_status(ctx):
+    await ctx.send(await get_update_discord(ctx))
+    await ctx.send(get_update_clan())
+
     msg_list2 = await get_not_linked_brawlhalla_list()
     embed3 = discord.Embed(description=msg_list2[0], color=embed_color)
     embed4 = discord.Embed(description=msg_list2[1], color=embed_color)
@@ -75,13 +78,6 @@ async def get_status(ctx):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='updi', aliases=['updc'])
-async def update_discord_data(ctx):
-    msg = await get_update_discord(ctx)
-    await ctx.send(msg)
-
-
-@commands.has_role('DevOps')
 @bot.command(name='lsdi', aliases=['lsdc'])
 async def show_all_discord_members(ctx):
     msg = await get_update_discord(ctx)
@@ -99,14 +95,10 @@ async def show_all_discord_members(ctx):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='upcl')
-async def update_clan_data(ctx):
-    await ctx.channel.send(get_update_clan())
-
-
-@commands.has_role('DevOps')
 @bot.command(name='lscl')
 async def show_all_clan_members(ctx):
+    await ctx.channel.send(get_update_clan())
+
     msg_list = await get_clan_list()
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
