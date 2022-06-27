@@ -3,6 +3,7 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
 
 ## Commands
 - [Prefix](#prefix)
+- [How to use](#how-to-use)
 - [Command Logic](#command-logic)
 - [Clan](#clan-commands)
   - [Get Clan List](#get-clan-list)
@@ -13,6 +14,8 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Remove Link](#remove-link)
   - [Get Link List](#get-link-list)
 - [Extra](#extra-commands)
+
+# How to use
 
 # Prefix
 Both `qs` and `Qs` work.
@@ -81,7 +84,14 @@ type `y` to confirm and `n` to cancel.
 now type `qslsli` to get the list with links. You'll see the new link is added.
 
 ## Remove Link
+`qsrmli brawlhalla_id` with this command you can remove an existing link, just like adding a link, it will ask for confirmation.
 
 ## Get Link List
+`qslsli` shows a list of all current links between discord and brawlhalla.
 
 # Extra
+`qssay message` makes the bot say something.
+
+`qshelp` sends link to this page.
+
+`qsmeme` sends a queen nai meme.
