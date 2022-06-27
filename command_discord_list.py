@@ -1,10 +1,10 @@
 import json
 
-with open('./data_discord.json') as f:
-    discord_data = json.load(f)
-
 
 async def get_discord_list():
+    with open('./data_discord.json') as f:
+        discord_data = json.load(f)
+
     num = 1
     msg1 = '**All users with [@Clan Member] role in discord**' + '\n'
     msg2 = ''

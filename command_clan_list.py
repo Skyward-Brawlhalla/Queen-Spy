@@ -1,11 +1,10 @@
 import json
 
 
-with open('./data_clan.json') as f:
-    clan_data = json.load(f)
-
-
 async def get_clan_list():
+    with open('./data_clan.json') as f:
+        clan_data = json.load(f)
+
     num = 1
     msg1 = '**All clan members ingame**\n'
     msg2 = ''
