@@ -45,14 +45,14 @@ embed_color = 0x790eab
 
 
 @commands.has_role('DevOps')
-@bot.command(name='updi')
+@bot.command(name='updi', aliases=['updc'])
 async def update_discord_data(ctx):
     msg = await get_update_discord(ctx)
     await ctx.send(msg)
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lsdi')
+@bot.command(name='lsdi', aliases=['lsdc'])
 async def show_all_discord_members(ctx):
     msg_list = await get_discord_list()
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
@@ -142,7 +142,7 @@ class User:
 
 
 @commands.has_role('DevOps')
-@bot.command(name='adli')
+@bot.command(name='adli', aliases=['addli', 'ali'])
 async def add_link(ctx, brawlhalla_id, discord_id):
 
     # first check if the entry already exists
