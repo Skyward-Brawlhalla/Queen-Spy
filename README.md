@@ -46,19 +46,47 @@ A command consists of 2 letters after each other multiple times.
 In this section we'll cover all clan related commands
 
 ## Update Clan Data
-`qsupcl` 
+`qsupcl` updates the clan data. Take note that Brawlhalla doesn't update their data in real time, so it might take up to 15 mintues for data to get updated in the Brawlhalla database. To solve this update clan data again in 15 minutes. Don't overuse this command since we might get a timeout from the Brawlhalla API.
 
 ## Get Clan List
+`qslscl` return a list of all clan members in game. Don't forget to first update the data using `qsupcl`.
 
 # Discord Commands
+In this section we'll cover all discord related commands
 
 ## Update Discord Data
+`qsupdc` / `qsupdi` updates the discord data.
 
 ## Get Discord List
-  
+`qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
+
 # Linking
+In this section we'll cover all account linking related commands
 
 ## Add Link
+`qsadli` / `qsaddli` / `qsali` creates a new link. Keep in mind that you have to provide parameters.
+
+**Example**
+
+`qsadli brawlhalla_id discord_id`
+
+`qsadli 7364605 413070742591373314`
+
+Bot will respond with 
+
+`Are you sure you want to add the following link?`
+
+```py
+brawlhalla_id: 7364605
+brawlhalla_name: CrossyChainsaw
+discord_id: 413070742591373314
+discord_name: CrossyChainsaw
+```
+`Send y to confirm or n to cancel.`
+
+type `y` to confirm and `n` to cancel.
+
+now type `qslsli` to get the list with links. You'll see the new link is added.
 
 ## Remove Link
 
