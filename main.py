@@ -1,4 +1,5 @@
 from ast import alias
+import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
 import config
@@ -229,6 +230,18 @@ async def missing_question(ctx, error):
 @bot.command(name='say')
 async def add_discord_id(ctx, arg):
     await ctx.channel.send(arg)
+
+
+@bot.command(name='meme')
+async def add_discord_id(ctx):
+    memes = [
+        'https://media.discordapp.net/attachments/973594560368373820/991113816299548753/unknown.png',
+        'https://cdn.discordapp.com/attachments/973594560368373820/991114373366034512/unknown.png',
+        'https://media.discordapp.net/attachments/973594560368373820/991115406716719144/unknown.png?width=589&height=670',
+        'https://cdn.discordapp.com/attachments/973594560368373820/991116025158443019/unknown.png'
+    ]
+    meme = memes[random.randint(0, len(memes) - 1)]
+    await ctx.channel.send(meme)
 
 
 @bot.command(name='help')
