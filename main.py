@@ -1,3 +1,4 @@
+from ast import alias
 from tkinter import Y
 from command_link_remove import delete_link_from_data
 import config
@@ -38,6 +39,35 @@ embed_color = 0x790eab
 # delete link command
 # see when a link isnt in the clan ingame anymmore
 
+# ⬇️ STATUS COMMANDS ⬇️
+# ⬇️ STATUS COMMANDS ⬇️
+# ⬇️ STATUS COMMANDS ⬇️
+
+
+@commands.has_role('DevOps')
+@bot.command(name='status', aliases=['tatus'])
+async def get_status(ctx):
+    msg_list2 = await get_not_linked_brawlhalla_list()
+    embed3 = discord.Embed(description=msg_list2[0], color=embed_color)
+    embed4 = discord.Embed(description=msg_list2[1], color=embed_color)
+    await ctx.channel.send(embed=embed3)
+    try:
+        await ctx.channel.send(embed=embed4)
+    except:
+        print('less than 26 entries')
+
+    msg_list3 = await get_not_linked_discord_list()
+    embed5 = discord.Embed(description=msg_list3[0], color=embed_color)
+    embed6 = discord.Embed(description=msg_list3[1], color=embed_color)
+    await ctx.channel.send(embed=embed5)
+    try:
+        await ctx.channel.send(embed=embed6)
+    except:
+        print('less than 26 entries')
+
+    msg = await get_left_players()
+    embed7 = discord.Embed(description=msg, color=embed_color)
+    await ctx.send(embed=embed7)
 
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
@@ -45,15 +75,18 @@ embed_color = 0x790eab
 
 
 @commands.has_role('DevOps')
-@bot.command(name='updi')
+@bot.command(name='updi', aliases=['updc'])
 async def update_discord_data(ctx):
     msg = await get_update_discord(ctx)
     await ctx.send(msg)
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lsdi')
+@bot.command(name='lsdi', aliases=['lsdc'])
 async def show_all_discord_members(ctx):
+    msg = await get_update_discord(ctx)
+    await ctx.send(msg)
+
     msg_list = await get_discord_list()
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
@@ -110,28 +143,6 @@ async def add_link(ctx):
     except:
         print('less than 26 entries')
 
-    msg_list2 = await get_not_linked_brawlhalla_list()
-    embed3 = discord.Embed(description=msg_list2[0], color=embed_color)
-    embed4 = discord.Embed(description=msg_list2[1], color=embed_color)
-    await ctx.channel.send(embed=embed3)
-    try:
-        await ctx.channel.send(embed=embed4)
-    except:
-        print('less than 26 entries')
-
-    msg_list3 = await get_not_linked_discord_list()
-    embed5 = discord.Embed(description=msg_list3[0], color=embed_color)
-    embed6 = discord.Embed(description=msg_list3[1], color=embed_color)
-    await ctx.channel.send(embed=embed5)
-    try:
-        await ctx.channel.send(embed=embed6)
-    except:
-        print('less than 26 entries')
-
-    msg = await get_left_players()
-    embed7 = discord.Embed(description=msg, color=embed_color)
-    await ctx.send(embed=embed7)
-
 
 class User:
     def __init__(self, brawlhalla_id, brawlhalla_name, discord_id, discord_name):
@@ -142,7 +153,7 @@ class User:
 
 
 @commands.has_role('DevOps')
-@bot.command(name='adli')
+@bot.command(name='adli', aliases=['addli', 'ali'])
 async def add_link(ctx, brawlhalla_id, discord_id):
 
     # first check if the entry already exists
