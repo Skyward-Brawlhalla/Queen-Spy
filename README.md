@@ -5,10 +5,8 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
 - [Prefix](#prefix)
 - [Command Logic](#command-logic)
 - [Clan](#clan-commands)
-  - [Update Clan Data](#update-clan-data)
   - [Get Clan List](#get-clan-list)
 - [Discord](#discord-commands)
-  - [Update Discord Data](#update-discord-data)
   - [Get Discord List](#get-discord-list)
 - [Linking](#linking-commands)
   - [Add Link](#add-link)
@@ -45,17 +43,11 @@ A command consists of 2 letters after each other multiple times.
 # Clan Commands
 In this section we'll cover all clan related commands
 
-## Update Clan Data
-`qsupcl` updates the clan data. Take note that Brawlhalla doesn't update their data in real time, so it might take up to 15 mintues for data to get updated in the Brawlhalla database. To solve this update clan data again in 15 minutes. Don't overuse this command since we might get a timeout from the Brawlhalla API.
-
 ## Get Clan List
-`qslscl` return a list of all clan members in game. Don't forget to first update the data using `qsupcl`.
+`qslscl` return a list of all clan members in game.
 
 # Discord Commands
 In this section we'll cover all discord related commands
-
-## Update Discord Data
-`qsupdc` / `qsupdi` updates the discord data.
 
 ## Get Discord List
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
