@@ -1,18 +1,17 @@
 # Queen Spy Documentation 
 In short, Queen Spy manages the links between brawlhalla and discord accounts. This helps to see if there are currently people in the discord with the clan role that shouldn't have the clan role.
 
-## Commands
-- [Prefix](#prefix)
+## Table of Contents
 - [How to use](#how-to-use)
-- [Command Logic](#command-logic)
-- [Clan](#clan-commands)
+- [Prefix](#prefix)
+- [Commands](#commands)
+  - [Command Logic](#command-logic)
   - [Get Clan List](#get-clan-list)
-- [Discord](#discord-commands)
   - [Get Discord List](#get-discord-list)
-- [Linking](#linking-commands)
-  - [Add Link](#add-link)
-  - [Remove Link](#remove-link)
-  - [Get Link List](#get-link-list)
+  - [Linking](#linking-commands)
+    - [Add Link](#add-link)
+    - [Remove Link](#remove-link)
+    - [Get Link List](#get-link-list)
 - [Extra](#extra-commands)
 
 # How to use
@@ -43,14 +42,8 @@ A command consists of 2 letters after each other multiple times.
 
 - dc -> discord
 
-# Clan Commands
-In this section we'll cover all clan related commands
-
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
-
-# Discord Commands
-In this section we'll cover all discord related commands
 
 ## Get Discord List
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
