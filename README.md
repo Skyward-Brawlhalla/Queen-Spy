@@ -20,7 +20,7 @@ Both `qs` and `Qs` work.
 # How to use
 First run `qstatus`, this gives you the current status of the clan and discord accounts. So what you should be doing is adding links between brawlhalla accounts and discord accounts. By adding links, they get removed from `qstatus`. Your goal is to make `qstatus` output nothing. I'll bring you through an example.
 
-**Examples**
+## Examples
 Force is a new member to our clan and joined our discord. `qstatus` / `qsstatus` shows us that his brawlhalla account isn't linked yet, also does it show his discord account isn't linked yet.
 
 ![image](https://user-images.githubusercontent.com/74303221/176176688-37c51b9b-0500-43c5-aa8c-561c9dd532be.png)
