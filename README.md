@@ -12,6 +12,7 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Get Link List](#get-link-list)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
+  - [Get Waiting List](#get-waiting-list)
   - [Extra](#extra-commands)
 
 # Prefix
@@ -120,7 +121,5 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 ## Get Discord List
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
 
-## Extra Commands
-`qshelp` sends a link to this page.
-
-`qsmeme` sends a queen nai meme.
+## Get Waiting List
+`qslsw` / `qslswa` returns a list of everyone in the discord with the `@Waiting List` role.
