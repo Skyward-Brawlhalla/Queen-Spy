@@ -52,7 +52,9 @@ If it ever shows a `discord_id` but not a `brawlhalla_id` this means someone is 
 
 To solve this we simply remove `@Clan Member` role from Queen Spy, if we run `qstatus` now its blank again.
 
-# Command Logic
+# List of commands
+
+## Command Logic
 A command consists of 2 letters after each other multiple times.
 
 **Example 1**
@@ -76,8 +78,6 @@ A command consists of 2 letters after each other multiple times.
 - dc -> discord
 
 Multiple commands more than 1 command names. For example `qsali` / `qsadli` / `qsaddli` all do the same thing.
-
-# List of commands
 
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
