@@ -85,9 +85,6 @@ Multiple commands more than 1 command names. For example `qsali` / `qsadli` / `q
 ## Get Discord List
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
 
-## Linking
-In this section we'll cover all account linking related commands
-
 ## Add Link
 `qsadli` / `qsaddli` / `qsali` creates a new link. Keep in mind that you have to provide parameters.
 
