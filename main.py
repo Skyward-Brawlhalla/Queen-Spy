@@ -1,7 +1,10 @@
-from ast import alias
+from ast import alias, arg
 import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
+from command_waitinglist_add import add_to_waiting_list
+from command_waitinglist_list import get_waitinglist_list
+from command_waitinglist_remove import delete_waiter_from_waitinglist
 import config
 import discord
 import os
@@ -225,6 +228,23 @@ async def missing_question(ctx, error):
 # ⬇️ EXTRA COMAMNDS ⬇️
 # ⬇️ EXTRA COMAMNDS ⬇️
 # ⬇️ EXTRA COMAMNDS ⬇️
+
+
+@bot.command(name='awa', aliases=['adwa', 'addwa'])
+async def waiting_list(ctx, discord_id):
+    await ctx.channel.send(await add_to_waiting_list(ctx=ctx, discord_id=discord_id))
+
+
+@commands.has_role('DevOps')
+@bot.command(name='lswa')
+async def get_waiting_list(ctx):
+    await ctx.channel.send(embed=await get_waitinglist_list())
+
+
+@commands.has_role('DevOps')
+@bot.command(name='rmwa')
+async def delete_waiter(ctx, discord_id):
+    await ctx.channel.send(embed=await delete_waiter_from_waitinglist(discord_id=discord_id, bot=bot, ctx=ctx))
 
 
 @bot.command(name='say')
