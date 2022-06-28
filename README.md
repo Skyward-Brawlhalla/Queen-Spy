@@ -117,8 +117,6 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 `qslsli` shows a list of all current links between discord and brawlhalla.
 
 ## Extra Commands
-`qssay message` makes the bot say something.
-
-`qshelp` sends link to this page.
+`qshelp` sends a link to this page.
 
 `qsmeme` sends a queen nai meme.
