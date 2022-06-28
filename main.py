@@ -8,7 +8,6 @@ from command_waitinglist_remove import delete_waiter_from_waitinglist
 import config
 import discord
 import os
-import time
 import discord
 import json
 from ntpath import join
@@ -20,20 +19,12 @@ from pydoc import classname
 from discord.ext import commands
 from discord.ext import tasks
 from keep_alive import keep_alive
-
 from command_link_add import get_add_link
 from command_clan_list import get_clan_list
 from command_discord_list import get_discord_list
 from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get_not_linked_discord_list, get_left_players
 from command_clan_update import get_update_clan
 from command_discord_update import DiscordAccount, get_update_discord
-
-with open('./data_discord.json') as data:
-    discord_data = json.load(data)
-with open('./data_clan.json') as data:
-    clan_data = json.load(data)
-with open('./data_link.json') as data:
-    link_data = json.load(data)
 
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
@@ -53,7 +44,7 @@ embed_color = 0x790eab
 async def get_status(ctx):
     await ctx.message.delete()
     await ctx.send(await get_update_discord(ctx))
-    await ctx.send(get_update_clan())
+    await ctx.send(await get_update_clan())
 
     msg_list2 = await get_not_linked_brawlhalla_list()
     embed3 = discord.Embed(description=msg_list2[0], color=embed_color)
