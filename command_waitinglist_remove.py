@@ -19,7 +19,7 @@ async def delete_waiter_from_waitinglist(discord_id, bot, ctx):
             msg = await bot.wait_for('message', check=check)
             if msg.content == 'y':
                 embed2 = discord.Embed(
-                    description='**Deleted the following player**\n' +
+                    description='**Deleted the following player from the waiting list**\n' +
                     '**discord_id**: ' + str(waitinglist_data[num]['discord_id']) + '\n' +
                     '**discord_name**: ' + str(waitinglist_data[num]['discord_name']), color=embed_color)
                 del waitinglist_data[num]  # delete link
