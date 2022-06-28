@@ -4,15 +4,14 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
 ## Table of Contents
 - [Prefix](#prefix)
 - [How to use](#how-to-use)
-- [Commands](#commands)
+- [List of Commands](#commands)
   - [Command Logic](#command-logic)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
-  - [Linking](#linking-commands)
-    - [Add Link](#add-link)
-    - [Remove Link](#remove-link)
-    - [Get Link List](#get-link-list)
-- [Extra](#extra-commands)
+  - [Add Link](#add-link)
+  - [Remove Link](#remove-link)
+  - [Get Link List](#get-link-list)
+  - [Extra](#extra-commands)
 
 # Prefix
 Both `qs` and `Qs` work.
