@@ -51,6 +51,7 @@ embed_color = 0x790eab
 @commands.has_role('DevOps')
 @bot.command(name='status', aliases=['tatus'])
 async def get_status(ctx):
+    await ctx.message.delete()
     await ctx.send(await get_update_discord(ctx))
     await ctx.send(get_update_clan())
 
@@ -84,6 +85,7 @@ async def get_status(ctx):
 @commands.has_role('DevOps')
 @bot.command(name='lsdi', aliases=['lsdc'])
 async def show_all_discord_members(ctx):
+    await ctx.message.delete()
     msg = await get_update_discord(ctx)
     await ctx.send(msg)
 
@@ -101,6 +103,7 @@ async def show_all_discord_members(ctx):
 @commands.has_role('DevOps')
 @bot.command(name='lscl')
 async def show_all_clan_members(ctx):
+    await ctx.message.delete()
     await ctx.channel.send(get_update_clan())
 
     msg_list = await get_clan_list()
@@ -117,11 +120,13 @@ async def show_all_clan_members(ctx):
 @commands.has_role('DevOps')
 @bot.command(name='rmli')
 async def remove_link(ctx, brawlhalla_id):
+    await ctx.message.delete()
     embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id, bot=bot, ctx=ctx)
 
 
 @remove_link.error
 async def missing_question(ctx, error):
+    await ctx.message.delete()
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('format your message like the following\n`qsrmli brawlhalla_id`')
 
@@ -129,6 +134,7 @@ async def missing_question(ctx, error):
 @commands.has_role('DevOps')
 @bot.command(name='lsli')
 async def add_link(ctx):
+    await ctx.message.delete()
     msg_list = await get_link_list()
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
@@ -150,6 +156,7 @@ class User:
 @commands.has_role('DevOps')
 @bot.command(name='adli', aliases=['addli', 'ali'])
 async def add_link(ctx, brawlhalla_id, discord_id):
+    await ctx.message.delete()
 
     # first check if the entry already exists
     with open('./data_link.json') as data:
@@ -232,23 +239,27 @@ async def missing_question(ctx, error):
 
 @bot.command(name='awa', aliases=['adwa', 'addwa'])
 async def waiting_list(ctx, discord_id):
+    await ctx.message.delete()
     await ctx.channel.send(await add_to_waiting_list(ctx=ctx, discord_id=discord_id))
 
 
 @commands.has_role('DevOps')
 @bot.command(name='lswa')
 async def get_waiting_list(ctx):
+    await ctx.message.delete()
     await ctx.channel.send(embed=await get_waitinglist_list())
 
 
 @commands.has_role('DevOps')
 @bot.command(name='rmwa')
 async def delete_waiter(ctx, discord_id):
+    await ctx.message.delete()
     await ctx.channel.send(embed=await delete_waiter_from_waitinglist(discord_id=discord_id, bot=bot, ctx=ctx))
 
 
 @bot.command(name='say')
 async def add_discord_id(ctx, arg):
+    await ctx.message.delete()
     await ctx.channel.send(arg)
 
 
