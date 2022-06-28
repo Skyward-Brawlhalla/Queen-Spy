@@ -14,6 +14,9 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
     - [Get Link List](#get-link-list)
 - [Extra](#extra-commands)
 
+# Prefix
+Both `qs` and `Qs` work.
+
 # How to use
 First run `qstatus`, this gives you the current status of the clan and discord accounts. So what you should be doing is adding links between brawlhalla accounts and discord accounts. By adding links, they get removed from `qstatus`. Your goal is to make `qstatus` output nothing. I'll bring you through an example.
 
@@ -50,9 +53,6 @@ If it ever shows a `discord_id` but not a `brawlhalla_id` this means someone is 
 
 To solve this we simply remove `@Clan Member` role from Queen Spy, if we run `qstatus` now its blank again.
 
-# Prefix
-Both `qs` and `Qs` work.
-
 # Command Logic
 A command consists of 2 letters after each other multiple times.
 
@@ -75,6 +75,8 @@ A command consists of 2 letters after each other multiple times.
 - ls -> list
 
 - dc -> discord
+
+Multiple commands more than 1 command names. For example `qsali` / `qsadli` / `qsaddli` all do the same thing.
 
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
