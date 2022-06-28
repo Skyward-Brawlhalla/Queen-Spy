@@ -4,7 +4,7 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
 ## Table of Contents
 - [Prefix](#prefix)
 - [How to use](#how-to-use)
-- [List of Commands](#commands)
+- [List of Commands](#list-of-commands)
   - [Command Logic](#command-logic)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
@@ -77,13 +77,15 @@ A command consists of 2 letters after each other multiple times.
 
 Multiple commands more than 1 command names. For example `qsali` / `qsadli` / `qsaddli` all do the same thing.
 
+# List of commands
+
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
 
 ## Get Discord List
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
 
-# Linking
+## Linking
 In this section we'll cover all account linking related commands
 
 ## Add Link
@@ -117,7 +119,7 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 ## Get Link List
 `qslsli` shows a list of all current links between discord and brawlhalla.
 
-# Extra Commands
+## Extra Commands
 `qssay message` makes the bot say something.
 
 `qshelp` sends link to this page.
