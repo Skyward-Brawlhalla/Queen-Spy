@@ -8,7 +8,7 @@ class DiscordAccount:
         self.name = name
 
 
-async def get_update_discord(ctx):
+async def update_discord_data(ctx):
     guild = ctx.guild
     msg = ''
     num = 1
