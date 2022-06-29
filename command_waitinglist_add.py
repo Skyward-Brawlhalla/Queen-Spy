@@ -31,5 +31,8 @@ async def add_to_waiting_list(ctx, discord_id):
                     msg = '*Added ' + member.name + ' to waiting list*'
                     break
                 elif new_entry == False:
-                    msg = member.name + 'is already in the waiting list'
+                    msg = member.name + ' is already in the waiting list'
+        else:
+            msg = 'The discord account with `discord_id: ' + \
+                discord_id + '` does not have the `@Waiting List` role'  # showing the persons name would be nicer
     return msg
