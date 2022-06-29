@@ -258,6 +258,12 @@ async def waiting_list(ctx, discord_id):
     await ctx.channel.send(await add_to_waiting_list(ctx=ctx, discord_id=discord_id))
 
 
+@waiting_list.error
+async def missing_question(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('format your message like the following\n`qsadwa discord_id`')
+
+
 @commands.has_role('DevOps')
 @bot.command(name='lswa')
 async def get_waiting_list(ctx):
@@ -270,6 +276,12 @@ async def get_waiting_list(ctx):
 async def delete_waiter(ctx, discord_id):
     await ctx.message.delete()
     await ctx.channel.send(embed=await delete_waiter_from_waitinglist(discord_id=discord_id, bot=bot, ctx=ctx))
+
+
+@delete_waiter.error
+async def missing_question(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('format your message like the following\n`qsrmwa discord_id`')
 
 # ⬇️ EXTRA COMAMNDS ⬇️
 # ⬇️ EXTRA COMAMNDS ⬇️

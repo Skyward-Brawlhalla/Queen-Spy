@@ -28,11 +28,10 @@ async def add_to_waiting_list(ctx, discord_id):
                     waiting_data.append(discord_account.__dict__)
                     with open('./data_waitinglist.json', 'w') as f:
                         waiting_data = json.dump(waiting_data, f)
-                    msg = '*Added ' + member.name + ' to waiting list*'
-                    break
+                    return '*Added ' + member.name + ' to waiting list*'
                 elif new_entry == False:
-                    msg = member.name + ' is already in the waiting list'
-        else:
-            msg = 'The discord account with `discord_id: ' + \
-                discord_id + '` does not have the `@Waiting List` role'  # showing the persons name would be nicer
-    return msg
+                    return member.name + ' is already in the waiting list'
+
+    for member2 in skyward_server.members:
+        if str(member2.id) == str(discord_id):
+            return member2.name + ' does not have the `@Waiting List` role'
