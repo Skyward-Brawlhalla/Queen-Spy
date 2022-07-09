@@ -23,13 +23,13 @@ async def delete_link_from_data(brawlhalla_id, bot, ctx):
             # confirmation message
             msg = await bot.wait_for('message', check=check)
             if msg.content == 'y':
-                del link_data[num]  # delete link
                 embed2 = discord.Embed(
                     description='**Deleted the following link**\n' +
                     '**brawlhalla_id**: ' + str(link_data[num]['brawlhalla_id']) + '\n' +
                     '**brawlhalla_name**: ' + str(link_data[num]['brawlhalla_name']) + '\n' +
                     '**discord_id**: ' + str(link_data[num]['discord_id']) + '\n' +
                     '**discord_name**: ' + str(link_data[num]['discord_name']), color=embed_color)
+                del link_data[num]  # delete link
                 await ctx.send(embed=embed2)
             elif msg.content == 'n':
                 await ctx.send('*Process Canceled*')
