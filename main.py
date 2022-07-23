@@ -3,7 +3,7 @@ import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
 from command_waitinglist_add import add_to_waiting_list
-from command_waitinglist_list import get_waitinglist_list
+from command_waitinglist_list import get_waitinglist_list, get_waitinglist_list_new
 from command_waitinglist_remove import delete_waiter_from_waitinglist
 import config
 import discord
@@ -249,39 +249,11 @@ async def missing_question(ctx, error):
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 
 
-@bot.command(name='awa', aliases=['adwa', 'addwa'])
-async def waiting_list(ctx, discord_id):
-
-    # delete te users message
-    await ctx.message.delete()
-
-    await ctx.channel.send(await add_to_waiting_list(ctx=ctx, discord_id=discord_id))
-
-
-@waiting_list.error
-async def missing_question(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsadwa discord_id`')
-
-
 @commands.has_role('DevOps')
 @bot.command(name='lswa')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
-    await ctx.channel.send(embed=await get_waitinglist_list())
-
-
-@commands.has_role('DevOps')
-@bot.command(name='rmwa')
-async def delete_waiter(ctx, discord_id):
-    await ctx.message.delete()
-    await ctx.channel.send(embed=await delete_waiter_from_waitinglist(discord_id=discord_id, bot=bot, ctx=ctx))
-
-
-@delete_waiter.error
-async def missing_question(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsrmwa discord_id`')
+    await ctx.channel.send(embed=await get_waitinglist_list_new(ctx=ctx))
 
 # ⬇️ EXTRA COMAMNDS ⬇️
 # ⬇️ EXTRA COMAMNDS ⬇️
