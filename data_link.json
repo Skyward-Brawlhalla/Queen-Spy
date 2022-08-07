@@ -6,12 +6,6 @@
         "discord_name": "Solarson"
     },
     {
-        "brawlhalla_id": "8450827",
-        "brawlhalla_name": "Tempest?",
-        "discord_id": "396363519567724564",
-        "discord_name": "Tempest?"
-    },
-    {
         "brawlhalla_id": "3764805",
         "brawlhalla_name": "Lil'Fox <3",
         "discord_id": "344762518033399809",
@@ -66,12 +60,6 @@
         "discord_name": "zDisigma"
     },
     {
-        "brawlhalla_id": "81823412",
-        "brawlhalla_name": "21",
-        "discord_id": "808677659101626389",
-        "discord_name": "2I"
-    },
-    {
         "brawlhalla_id": "54489626",
         "brawlhalla_name": "Yami_ThomBozz",
         "discord_id": "818465649671274497",
@@ -100,12 +88,6 @@
         "brawlhalla_name": ".diline",
         "discord_id": "289386297527894016",
         "discord_name": "diline"
-    },
-    {
-        "brawlhalla_id": "4070196",
-        "brawlhalla_name": "AH",
-        "discord_id": "468520189781082112",
-        "discord_name": "AH"
     },
     {
         "brawlhalla_id": "61355963",
@@ -150,28 +132,10 @@
         "discord_name": "ma2st4er5"
     },
     {
-        "brawlhalla_id": "29595285",
-        "brawlhalla_name": "OG",
-        "discord_id": "661684507778351144",
-        "discord_name": "OG"
-    },
-    {
-        "brawlhalla_id": "26417667",
-        "brawlhalla_name": "Dobleh #Lidia",
-        "discord_id": "360866188684689409",
-        "discord_name": "Dobleh"
-    },
-    {
         "brawlhalla_id": "9201392",
         "brawlhalla_name": "Lowkey",
         "discord_id": "497086786569371666",
         "discord_name": "Lowkey"
-    },
-    {
-        "brawlhalla_id": "6458727",
-        "brawlhalla_name": "Schuppi.",
-        "discord_id": "521070877916397569",
-        "discord_name": "Schuppezot"
     },
     {
         "brawlhalla_id": "3577224",
@@ -252,22 +216,10 @@
         "discord_name": "AQUA"
     },
     {
-        "brawlhalla_id": "9346027",
-        "brawlhalla_name": "LLLLore",
-        "discord_id": "515600441099419680",
-        "discord_name": "LLLLore"
-    },
-    {
         "brawlhalla_id": "9048248",
         "brawlhalla_name": "Lil Liser <3",
         "discord_id": "648264475585019919",
         "discord_name": "Lil Liser"
-    },
-    {
-        "brawlhalla_id": "35527409",
-        "brawlhalla_name": "swish\u00c2\u00bf",
-        "discord_id": "606806295097638932",
-        "discord_name": "Arthur"
     },
     {
         "brawlhalla_id": "6433263",
@@ -288,9 +240,57 @@
         "discord_name": "\u5343\u3116\u5c3a\u531a\u4e47\u2122"
     },
     {
+        "brawlhalla_id": "9865431",
+        "brawlhalla_name": "LeKo",
+        "discord_id": "515544655480487937",
+        "discord_name": "LeKo"
+    },
+    {
+        "brawlhalla_id": "7124064",
+        "brawlhalla_name": "woven",
+        "discord_id": "129253606544113664",
+        "discord_name": "Woven"
+    },
+    {
+        "brawlhalla_id": "10459663",
+        "brawlhalla_name": "Lisandruo20",
+        "discord_id": "239759577577553920",
+        "discord_name": "lisandruo20 EU"
+    },
+    {
+        "brawlhalla_id": "29819668",
+        "brawlhalla_name": "L\u00e2\u0081\u00a7\u00e2\u0081\u00a7\u00e2\u0098\u0085\u00e2\u0098\u0085\u00e2\u0098\u0085",
+        "discord_id": "768509413152522306",
+        "discord_name": "\u2605\u2605\u2605\u2605\u2605"
+    },
+    {
         "brawlhalla_id": "7364605",
         "brawlhalla_name": "CrossyChainsaw",
         "discord_id": "413070742591373314",
         "discord_name": "CrossyChainsaw"
+    },
+    {
+        "brawlhalla_id": "6244176",
+        "brawlhalla_name": "Sukaroo",
+        "discord_id": "875447122919567370",
+        "discord_name": "sukaroo"
+    },
+    {
+        "brawlhalla_id": "39794122",
+        "brawlhalla_name": "Dex",
+        "discord_id": "357148393115746304",
+        "discord_name": "Dex"
+    },
+    {
+        "brawlhalla_id": "87710416",
+        "brawlhalla_name": "Borgir",
+        "discord_id": "943889152510951445",
+        "discord_name": "Borgir"
+    },
+    {
+        "brawlhalla_id": "7491681",
+        "brawlhalla_name": "Vein",
+        "discord_id": "852620170282139709",
+        "discord_name": "Vein .-."
     }
 ]
