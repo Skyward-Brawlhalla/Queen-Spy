@@ -62,13 +62,13 @@ A command consists of 2 letters after each other multiple times.
 
 **Example 1**
 
-`qsupcl` stands for 
+`qsadli` stands for 
 
 - qs -> queen spy
 
-- up -> update
+- ad -> add
 
-- cl -> clan
+- li -> link
 
 **Example 2**
 
