@@ -13,8 +13,6 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
   - [Get Waiting List](#get-waiting-list)
-  - [Add someone to waiting list](#add-someone-to-waiting-list)
-  - [Remove someone from waiting list](#remove-someone-from-waiting-list)
 
 # Prefix
 Both `qs` and `Qs` work.
