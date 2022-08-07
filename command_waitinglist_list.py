@@ -7,7 +7,7 @@ from command_discord_update import DiscordAccount
 embed_color = 0x790eab
 
 
-async def get_waitinglist_list_new(ctx):
+async def get_waitinglist_list(ctx):
     skyward_server = ctx.guild
     member_ids = []
     member_names = []
