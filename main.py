@@ -43,7 +43,7 @@ async def get_status(ctx):
     # delete te users message
     await ctx.message.delete()
 
-    # send loading message
+    # send loading message 1
     msg_loading_data = await ctx.send('_Loading Data..._')
 
     # update all data
@@ -82,15 +82,15 @@ async def get_status(ctx):
     except:
         print('less than 26 entries')
 
-    # delete loading message
+    # delete loading message 1
     await msg_loading_data.delete()
-    # send loading message
+    # send loading message 2
     msg_loading_data = await ctx.send('_Loading Data..._')
 
     # send all players who left the clan
     await ctx.send(embed=embed_left_players)
 
-    # delete loading message
+    # delete loading message 2
     await msg_loading_data.delete()
 
 
