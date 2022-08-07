@@ -2,9 +2,7 @@ from ast import alias, arg
 import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
-from command_waitinglist_add import add_to_waiting_list
-from command_waitinglist_list import get_waitinglist_list, get_waitinglist_list_new
-from command_waitinglist_remove import delete_waiter_from_waitinglist
+from command_waitinglist_list import get_waitinglist_list
 import config
 import discord
 import os
@@ -27,13 +25,11 @@ from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get
 from command_clan_update import update_clan_data
 from command_discord_update import DiscordAccount, update_discord_data
 
+# VARIABLES
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
                    intents=intents, help_command=None)
 embed_color = 0x790eab
-# TO DO
-# delete link command
-# see when a link isnt in the clan ingame anymmore
 
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
@@ -71,23 +67,32 @@ async def get_status(ctx):
     embed_left_players = discord.Embed(
         description=msg_left_players, color=embed_color)
 
-    # delete loading messages
-    await msg_loading_data.delete()
-
     # send embeds
+    # send not linked brawlhalla accounts
     await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_first)
     try:
         await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_last)
     except:
         print('less than 26 entries')
 
+    # send not linked discord accounts
     await ctx.channel.send(embed=embed_not_linked_discord_list_first)
     try:
         await ctx.channel.send(embed=embed_not_linked_discord_list_last)
     except:
         print('less than 26 entries')
 
+    # delete loading message
+    await msg_loading_data.delete()
+    # send loading message
+    msg_loading_data = await ctx.send('_Loading Data..._')
+
+    # send all players who left the clan
     await ctx.send(embed=embed_left_players)
+
+    # delete loading message
+    await msg_loading_data.delete()
+
 
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
@@ -253,11 +258,18 @@ async def missing_question(ctx, error):
 @bot.command(name='lswa')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
-    await ctx.channel.send(embed=await get_waitinglist_list_new(ctx=ctx))
+    await ctx.channel.send(embed=await get_waitinglist_list(ctx=ctx))
 
-# ⬇️ EXTRA COMAMNDS ⬇️
-# ⬇️ EXTRA COMAMNDS ⬇️
-# ⬇️ EXTRA COMAMNDS ⬇️
+# ⬇️ OTHER COMMANDS ⬇️
+# ⬇️ OTHER COMMANDS ⬇️
+# ⬇️ OTHER COMMANDS ⬇️
+
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+    log_channel = bot.get_channel(973594560368373820)
+    await log_channel.send("I'm back online!")
 
 
 @bot.command(name='say')
@@ -280,6 +292,11 @@ async def add_discord_id(ctx):
 
 @bot.command(name='help')
 async def help(ctx):
+    await ctx.channel.send('being worked on, for now check documentation -> https://github.com/CrossyChainsaw/Queen-Spy')
+
+
+@bot.command(name='doc', aliases=['docs'])
+async def doc(ctx):
     await ctx.channel.send('Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy')
 
 
