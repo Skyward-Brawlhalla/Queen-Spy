@@ -41,7 +41,7 @@ a player named Emma left the clan, when we run `qstatus`, Queen Spy points out a
 
 ![image](https://user-images.githubusercontent.com/74303221/176177804-ee6c8d6f-f617-4ee6-9447-86d72c4f56ed.png)
 
-This means we can remove him from the discord adn remove the link.
+This means we can remove him from the discord and remove the link.
 
 ![image](https://user-images.githubusercontent.com/74303221/176178969-11474ebb-f330-42f0-b2e4-9aa916855257.png)
 
