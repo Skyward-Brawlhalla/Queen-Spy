@@ -123,15 +123,4 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
 
 ## Get Waiting List
-`qslsw` / `qslswa` returns a list of everyone in the discord with the `@Waiting List` role.
-
-## Add someone to waiting list
-`qsawa` / `qsadwa` / `qsaddwa` adds someone to the waiting list. You can check it with `qstatus`
-
-### Example
-`qsadwa discord_id` this is what the command looks like with the parameters
-
-`qsadwa 413070742591373314` adds my discord account to the waiting list, keep in mind that you can only add people to the waiting list that actually have the `@Waiting List` role
-
-## Remove someone from waiting list
-`qsrmwa discord_id` removes someone off the list, after removing you can check with `qstatus`
+`qslsw` / `qslswa` returns a list of everyone in the discord server with the `@Waiting List` role.
