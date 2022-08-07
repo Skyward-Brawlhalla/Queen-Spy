@@ -258,7 +258,7 @@ async def missing_question(ctx, error):
 @bot.command(name='lswa')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
-    await ctx.channel.send(embed=await get_waitinglist_list_new(ctx=ctx))
+    await ctx.channel.send(embed=await get_waitinglist_list(ctx=ctx))
 
 # ⬇️ OTHER COMMANDS ⬇️
 # ⬇️ OTHER COMMANDS ⬇️
