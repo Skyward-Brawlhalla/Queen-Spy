@@ -28,8 +28,7 @@ from command_discord_update import DiscordAccount, update_discord_data
 # VARIABLES
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
-                   intents=intents,
-                   help_command=None)
+                   intents=intents)
 embed_color = 0x790eab
 
 # ⬇️ STATUS COMMANDS ⬇️
@@ -38,7 +37,7 @@ embed_color = 0x790eab
 
 
 @commands.has_role('DevOps')
-@bot.command(name='status', aliases=['tatus', 'st', 's'])
+@bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
 async def get_status(ctx):
 
     # delete te users message
@@ -96,9 +95,8 @@ async def get_status(ctx):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lsdi', aliases=['lsdc'])
+@bot.command(name='lsdi', aliases=['lsdc'], description='Show everyone with the @Clan Member role')
 async def show_all_discord_members(ctx):
-    await ctx.message.delete()
     msg = await update_discord_data(ctx)
     await ctx.send(msg)
 
@@ -115,9 +113,8 @@ async def show_all_discord_members(ctx):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lscl')
+@bot.command(name='lscl', description='Show all ingame clan members')
 async def show_all_clan_members(ctx):
-    await ctx.message.delete()
     await ctx.channel.send(update_clan_data())
 
     msg_list = await get_clan_list()
@@ -133,7 +130,7 @@ async def show_all_clan_members(ctx):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='rmli')
+@bot.command(name='rmli', description='Remove a discord-brawlhalla link')
 async def remove_link(ctx, brawlhalla_id):
     await ctx.message.delete()
     embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id,
@@ -150,7 +147,7 @@ async def missing_question(ctx, error):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lsli')
+@bot.command(name='lsli', description='Show All Links')
 async def add_link(ctx):
     await ctx.message.delete()
     msg_list = await get_link_list()
@@ -173,7 +170,7 @@ class User:
 
 
 @commands.has_role('DevOps')
-@bot.command(name='adli', aliases=['addli', 'ali'])
+@bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
 async def add_link(ctx, brawlhalla_id, discord_id):
     await ctx.message.delete()
 
@@ -276,7 +273,7 @@ async def missing_question(ctx, error):
 
 
 @commands.has_role('DevOps')
-@bot.command(name='lswa')
+@bot.command(name='lswa', description='Shows Waiting List')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
     await ctx.channel.send(embed=await get_waitinglist_list(ctx=ctx))
@@ -312,19 +309,18 @@ async def add_discord_id(ctx):
     await ctx.channel.send(meme)
 
 
-@bot.command(name='help')
-async def help(ctx):
-    await ctx.channel.send(
-        'being worked on, for now check documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
-    )
+# @bot.command(name='help')
+# async def help(ctx):
+#     await ctx.channel.send(
+#         'being worked on, for now check documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
+#     )
 
 
-@bot.command(name='doc', aliases=['docs'])
+@bot.command(name='doc', aliases=['docs'], description="Send you to the GitHub page")
 async def doc(ctx):
     await ctx.channel.send(
         'Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
     )
-
 
 keep_alive()
 bot.run(config.BOT_KEY)
