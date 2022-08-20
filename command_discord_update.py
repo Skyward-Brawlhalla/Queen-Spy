@@ -1,6 +1,7 @@
 import discord
 import json
 
+clan_member_role_name = '💧 Dair 💧'
 
 class DiscordAccount:
     def __init__(self, id, name):
@@ -15,7 +16,7 @@ async def update_discord_data(ctx):
     discord_member_names = []
     discord_member_ids = []
     discord_accounts = []
-    role = discord.utils.get(ctx.message.guild.roles, name="Clan Member")
+    role = discord.utils.get(ctx.message.guild.roles, name=clan_member_role_name)
     for member in guild.members:
         if role in member.roles:
             msg += str(num) + '. ' + member.name + '\n'

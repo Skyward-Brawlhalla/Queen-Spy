@@ -30,18 +30,17 @@ intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
                    intents=intents)
 embed_color = 0x790eab
+required_role = 'Helper'
 
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
+
+@commands.has_role(required_role)
 @bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
 async def get_status(ctx):
-
-    # delete te users message
-    await ctx.message.delete()
 
     # send loading message
     msg_loading_data = await ctx.send('_Loading Data..._')
@@ -94,7 +93,7 @@ async def get_status(ctx):
 # ⬇️ DISCORD COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='lsdi', aliases=['lsdc'], description='Show everyone with the @Clan Member role')
 async def show_all_discord_members(ctx):
     msg = await update_discord_data(ctx)
@@ -112,7 +111,7 @@ async def show_all_discord_members(ctx):
 # ⬇️ CLAN COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='lscl', description='Show all ingame clan members')
 async def show_all_clan_members(ctx):
     await ctx.channel.send(update_clan_data())
@@ -129,10 +128,9 @@ async def show_all_clan_members(ctx):
 # ⬇️ LINKING COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='rmli', description='Remove a discord-brawlhalla link')
 async def remove_link(ctx, brawlhalla_id):
-    await ctx.message.delete()
     embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id,
                                          bot=bot,
                                          ctx=ctx)
@@ -146,7 +144,7 @@ async def missing_question(ctx, error):
             'format your message like the following\n`qsrmli brawlhalla_id`')
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='lsli', description='Show All Links')
 async def add_link(ctx):
     await ctx.message.delete()
@@ -169,10 +167,9 @@ class User:
         self.discord_name = discord_name
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
 async def add_link(ctx, brawlhalla_id, discord_id):
-    await ctx.message.delete()
 
     # first check if the entry already exists
     with open('./data_link.json') as data:
@@ -272,7 +269,7 @@ async def missing_question(ctx, error):
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 
 
-@commands.has_role('DevOps')
+@commands.has_role(required_role)
 @bot.command(name='lswa', description='Shows Waiting List')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
@@ -323,4 +320,4 @@ async def doc(ctx):
     )
 
 keep_alive()
-bot.run(config.BOT_KEY)
+bot.run(os.environ['BOT_KEY'])

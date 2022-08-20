@@ -29,41 +29,6 @@ async def get_not_linked_brawlhalla_list():
     with open('./data_link.json') as f:
         link_data = json.load(f)
 
-    new_discord_ids = []
-    new_discord_names = []
-    for member in clan_data['clan']:
-        new_id = True
-        for link in link_data:
-            if str(link['brawlhalla_id']) == str(member['brawlhalla_id']):
-                new_id = False
-        if new_id == True:
-            new_discord_ids.append(str(member['brawlhalla_id']))
-            new_discord_names.append(str(member['name']))
-
-    msg1 = "**The following people are ingame in brawlhalla, but aren't linked yet\n**"
-    msg2 = ""
-    num = 1
-    for (id, name) in zip(new_discord_ids, new_discord_names):
-        if num <= 25:
-            msg1 += str(num) + '. **brawlhalla_id**: ' + id + \
-                ', **brawlhalla_name**: ' + name + '\n'
-        else:
-            msg2 += str(num) + '. **brawlhalla_id**: ' + id + \
-                ', **brawlhalla_name**: ' + name + '\n'
-        num += 1
-
-    msg_list = []
-    msg_list.append(msg1)
-    msg_list.append(msg2)
-    return(msg_list)
-
-
-async def get_not_linked_brawlhalla_list():
-    with open('./data_clan.json') as f:
-        clan_data = json.load(f)
-    with open('./data_link.json') as f:
-        link_data = json.load(f)
-
     new_brawlhalla_ids = []
     new_brawlhalla_names = []
     for member in clan_data['clan']:
@@ -110,7 +75,7 @@ async def get_not_linked_discord_list():
             new_discord_ids.append(str(account['id']))
             new_discord_names.append(str(account['name']))
 
-    msg1 = "**The following people are in the discord, but aren't linked yet\n**"
+    msg1 = "**The following people have the role in discord, but aren't linked yet\n**"
     msg2 = ""
     num = 1
     for (id, name) in zip(new_discord_ids, new_discord_names):

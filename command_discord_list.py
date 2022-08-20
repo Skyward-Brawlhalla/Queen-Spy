@@ -6,7 +6,7 @@ async def get_discord_list():
         discord_data = json.load(f)
 
     num = 1
-    msg1 = '**All users with [@Clan Member] role in discord**' + '\n'
+    msg1 = '**All users with [💚Members💚] role in discord**' + '\n'
     msg2 = ''
     for player in discord_data:
         if num <= 25:
