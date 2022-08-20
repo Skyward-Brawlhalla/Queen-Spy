@@ -3,6 +3,7 @@ import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
 from command_waitinglist_list import get_waitinglist_list
+import config
 import discord
 import os
 import discord
@@ -24,12 +25,6 @@ from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get
 from command_clan_update import update_clan_data
 from command_discord_update import DiscordAccount, update_discord_data
 
-#
-#
-# More up to date then github
-#
-#
-
 # VARIABLES
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
@@ -40,6 +35,7 @@ required_role = 'Helper'
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
+
 
 
 @commands.has_role(required_role)
