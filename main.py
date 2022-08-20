@@ -2,10 +2,7 @@ from ast import alias, arg
 import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
-from command_waitinglist_add import add_to_waiting_list
 from command_waitinglist_list import get_waitinglist_list
-from command_waitinglist_remove import delete_waiter_from_waitinglist
-import config
 import discord
 import os
 import discord
@@ -27,25 +24,27 @@ from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get
 from command_clan_update import update_clan_data
 from command_discord_update import DiscordAccount, update_discord_data
 
+#
+#
+# More up to date then github
+#
+#
+
+# VARIABLES
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=['qs', 'Qs'],
-                   intents=intents, help_command=None)
+                   intents=intents)
 embed_color = 0x790eab
-# TO DO
-# delete link command
-# see when a link isnt in the clan ingame anymmore
+required_role = 'Helper'
 
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
 # ⬇️ STATUS COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
-@bot.command(name='status', aliases=['tatus'])
+@commands.has_role(required_role)
+@bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
 async def get_status(ctx):
-
-    # delete te users message
-    await ctx.message.delete()
 
     # send loading message
     msg_loading_data = await ctx.send('_Loading Data..._')
@@ -68,36 +67,39 @@ async def get_status(ctx):
         description=msg_list3[1], color=embed_color)
 
     msg_left_players = await get_left_players()
-    embed_left_players = discord.Embed(
-        description=msg_left_players, color=embed_color)
-
-    # delete loading messages
-    await msg_loading_data.delete()
+    embed_left_players = discord.Embed(description=msg_left_players,
+                                       color=embed_color)
 
     # send embeds
+    # send not linked brawlhalla accounts
     await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_first)
     try:
         await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_last)
     except:
         print('less than 26 entries')
 
+    # send not linked discord accounts
     await ctx.channel.send(embed=embed_not_linked_discord_list_first)
     try:
         await ctx.channel.send(embed=embed_not_linked_discord_list_last)
     except:
         print('less than 26 entries')
 
+    # send all players who left the clan
     await ctx.send(embed=embed_left_players)
 
+    # delete loading message
+    await msg_loading_data.delete()
+
+
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
-@bot.command(name='lsdi', aliases=['lsdc'])
+@commands.has_role(required_role)
+@bot.command(name='lsdi', aliases=['lsdc'], description='Show everyone with the @Clan Member role')
 async def show_all_discord_members(ctx):
-    await ctx.message.delete()
     msg = await update_discord_data(ctx)
     await ctx.send(msg)
 
@@ -107,15 +109,15 @@ async def show_all_discord_members(ctx):
     await ctx.channel.send(embed=embed1)
     await ctx.channel.send(embed=embed2)
 
+
 # ⬇️ CLAN COMMANDS ⬇️
 # ⬇️ CLAN COMMANDS ⬇️
 # ⬇️ CLAN COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
-@bot.command(name='lscl')
+@commands.has_role(required_role)
+@bot.command(name='lscl', description='Show all ingame clan members')
 async def show_all_clan_members(ctx):
-    await ctx.message.delete()
     await ctx.channel.send(update_clan_data())
 
     msg_list = await get_clan_list()
@@ -124,27 +126,30 @@ async def show_all_clan_members(ctx):
     await ctx.channel.send(embed=embed1)
     await ctx.channel.send(embed=embed2)
 
+
 # ⬇️ LINKING COMMANDS ⬇️
 # ⬇️ LINKING COMMANDS ⬇️
 # ⬇️ LINKING COMMANDS ⬇️
 
 
-@commands.has_role('DevOps')
-@bot.command(name='rmli')
+@commands.has_role(required_role)
+@bot.command(name='rmli', description='Remove a discord-brawlhalla link')
 async def remove_link(ctx, brawlhalla_id):
-    await ctx.message.delete()
-    embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id, bot=bot, ctx=ctx)
+    embed1 = await delete_link_from_data(brawlhalla_id=brawlhalla_id,
+                                         bot=bot,
+                                         ctx=ctx)
 
 
 @remove_link.error
 async def missing_question(ctx, error):
     await ctx.message.delete()
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsrmli brawlhalla_id`')
+        await ctx.send(
+            'format your message like the following\n`qsrmli brawlhalla_id`')
 
 
-@commands.has_role('DevOps')
-@bot.command(name='lsli')
+@commands.has_role(required_role)
+@bot.command(name='lsli', description='Show All Links')
 async def add_link(ctx):
     await ctx.message.delete()
     msg_list = await get_link_list()
@@ -158,17 +163,17 @@ async def add_link(ctx):
 
 
 class User:
-    def __init__(self, brawlhalla_id, brawlhalla_name, discord_id, discord_name):
+    def __init__(self, brawlhalla_id, brawlhalla_name, discord_id,
+                 discord_name):
         self.brawlhalla_id = brawlhalla_id
         self.brawlhalla_name = brawlhalla_name
         self.discord_id = discord_id
         self.discord_name = discord_name
 
 
-@commands.has_role('DevOps')
-@bot.command(name='adli', aliases=['addli', 'ali'])
+@commands.has_role(required_role)
+@bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
 async def add_link(ctx, brawlhalla_id, discord_id):
-    await ctx.message.delete()
 
     # first check if the entry already exists
     with open('./data_link.json') as data:
@@ -176,11 +181,13 @@ async def add_link(ctx, brawlhalla_id, discord_id):
     new_entry = True
     for user in link_data:
         if str(user['brawlhalla_id']) == str(brawlhalla_id):
-            await ctx.send('brawlhalla_id: ' + brawlhalla_id + ' has already been linked')
+            await ctx.send('brawlhalla_id: ' + brawlhalla_id +
+                           ' has already been linked')
             new_entry = False
             break
         if str(user['discord_id']) == str(discord_id):
-            await ctx.send('discord_id: ' + discord_id + ' has already been linked')
+            await ctx.send('discord_id: ' + discord_id +
+                           ' has already been linked')
             new_entry = False
             break
 
@@ -207,85 +214,82 @@ async def add_link(ctx, brawlhalla_id, discord_id):
                 discord_name = account['name']
 
     # if entry ids are valid, add it
-    if ((valid_brawlhalla_id == True) and (valid_discord_id == True) and (new_entry == True)):
+    if ((valid_brawlhalla_id == True) and (valid_discord_id == True)
+            and (new_entry == True)):
 
         await ctx.send('Are you sure you want to add the following link?,')
-        await ctx.send(embed=discord.Embed(description='**brawlhalla_id**: ' + brawlhalla_id + '\n**brawlhalla_name**: ' + brawlhalla_name + '\n**discord_id**: ' + discord_id + '\n**discord_name**: ' + discord_name, color=embed_color))
+        await ctx.send(
+            embed=discord.Embed(description='**brawlhalla_id**: ' +
+                                brawlhalla_id + '\n**brawlhalla_name**: ' +
+                                brawlhalla_name + '\n**discord_id**: ' +
+                                discord_id + '\n**discord_name**: ' +
+                                discord_name,
+                                color=embed_color))
         await ctx.send('Send `y` to confirm or `n` to cancel.')
         msg = await bot.wait_for('message', check=check)
         if msg.content == 'y':
-            user = User(brawlhalla_id, brawlhalla_name,
-                        discord_id, discord_name)
+            user = User(brawlhalla_id, brawlhalla_name, discord_id,
+                        discord_name)
             users = []
             users = link_data
             users.append(user.__dict__)
             with open('./data_link.json', 'w') as f:
                 some_data = json.dump(users, f)
 
-            embed = discord.Embed(description='**Added Following Link**\n**brawlhalla_id**: ' + brawlhalla_id + '\n**brawlhalla_name**: ' +
-                                  brawlhalla_name + '\n**discord_id**: ' + discord_id + '\n**discord_name**: ' + discord_name, color=embed_color)
+            embed = discord.Embed(
+                description='**Added Following Link**\n**brawlhalla_id**: ' +
+                brawlhalla_id + '\n**brawlhalla_name**: ' + brawlhalla_name +
+                '\n**discord_id**: ' + discord_id + '\n**discord_name**: ' +
+                discord_name,
+                color=embed_color)
             await ctx.send(embed=embed)
         elif msg.content == 'n':
             await ctx.send('*Process Canceled*')
         else:
             await ctx.send('Invalid answer, process canceled')
     else:
-        await ctx.send("There was an error while trying to make the link. One of the following ids doesn't exist\n`discord_id: " + discord_id + '`\n`brawlhalla_id: ' + brawlhalla_id + '`')
+        await ctx.send(
+            "There was an error while trying to make the link. One of the following ids doesn't exist\n`discord_id: "
+            + discord_id + '`\n`brawlhalla_id: ' + brawlhalla_id + '`')
 
 
 def check(author):
     def inner_check(message):
         return message.author == author and message.content == "Hello"
+
     return inner_check
 
 
 @add_link.error
 async def missing_question(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsadli brawlhalla_id discord_id`')
+        await ctx.send(
+            'format your message like the following\n`qsadli brawlhalla_id discord_id`'
+        )
+
 
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 
 
-@bot.command(name='awa', aliases=['adwa', 'addwa'])
-async def waiting_list(ctx, discord_id):
-
-    # delete te users message
-    await ctx.message.delete()
-
-    await ctx.channel.send(await add_to_waiting_list(ctx=ctx, discord_id=discord_id))
-
-
-@waiting_list.error
-async def missing_question(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsadwa discord_id`')
-
-
-@commands.has_role('DevOps')
-@bot.command(name='lswa')
+@commands.has_role(required_role)
+@bot.command(name='lswa', description='Shows Waiting List')
 async def get_waiting_list(ctx):
     await ctx.message.delete()
-    await ctx.channel.send(embed=await get_waitinglist_list())
+    await ctx.channel.send(embed=await get_waitinglist_list(ctx=ctx))
 
 
-@commands.has_role('DevOps')
-@bot.command(name='rmwa')
-async def delete_waiter(ctx, discord_id):
-    await ctx.message.delete()
-    await ctx.channel.send(embed=await delete_waiter_from_waitinglist(discord_id=discord_id, bot=bot, ctx=ctx))
+# ⬇️ OTHER COMMANDS ⬇️
+# ⬇️ OTHER COMMANDS ⬇️
+# ⬇️ OTHER COMMANDS ⬇️
 
 
-@delete_waiter.error
-async def missing_question(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('format your message like the following\n`qsrmwa discord_id`')
-
-# ⬇️ EXTRA COMAMNDS ⬇️
-# ⬇️ EXTRA COMAMNDS ⬇️
-# ⬇️ EXTRA COMAMNDS ⬇️
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+    log_channel = bot.get_channel(973594560368373820)
+    await log_channel.send("I'm back online!")
 
 
 @bot.command(name='say')
@@ -306,10 +310,18 @@ async def add_discord_id(ctx):
     await ctx.channel.send(meme)
 
 
-@bot.command(name='help')
-async def help(ctx):
-    await ctx.channel.send('Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy')
+# @bot.command(name='help')
+# async def help(ctx):
+#     await ctx.channel.send(
+#         'being worked on, for now check documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
+#     )
 
+
+@bot.command(name='doc', aliases=['docs'], description="Send you to the GitHub page")
+async def doc(ctx):
+    await ctx.channel.send(
+        'Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
+    )
 
 keep_alive()
-bot.run(config.BOT_KEY)
+bot.run(os.environ['BOT_KEY'])
