@@ -6,7 +6,7 @@ embed_color = 0x790eab
 
 
 async def delete_link_from_data(brawlhalla_id, bot, ctx):
-    with open('./data_link.json') as f:
+    with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
     num = 0
     for link in link_data:
@@ -37,7 +37,7 @@ async def delete_link_from_data(brawlhalla_id, bot, ctx):
                 await ctx.send('Invalid answer, process canceled')
             break
         num += 1
-    with open('./data_link.json', 'w') as f:
+    with open('./data_link_'+ctx.guild.name+'.json', 'w') as f:
         json_string = json.dump(link_data, f)
 
 

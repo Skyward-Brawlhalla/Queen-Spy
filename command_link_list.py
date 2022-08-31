@@ -2,8 +2,8 @@ import json
 import discord
 
 
-async def get_link_list():
-    with open('./data_link.json') as f:
+async def get_link_list(ctx):
+    with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
     msg1 = '**All links between discord and brawlhalla**\n'
     msg2 = ''
@@ -23,10 +23,10 @@ async def get_link_list():
     return msg_list
 
 
-async def get_not_linked_brawlhalla_list():
-    with open('./data_clan.json') as f:
+async def get_not_linked_brawlhalla_list(ctx):
+    with open('./data_clan_'+ ctx.guild.name +'.json') as f:
         clan_data = json.load(f)
-    with open('./data_link.json') as f:
+    with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
 
     new_brawlhalla_ids = []
@@ -58,10 +58,10 @@ async def get_not_linked_brawlhalla_list():
     return(msg_list)
 
 
-async def get_not_linked_discord_list():
-    with open('./data_discord.json') as f:
+async def get_not_linked_discord_list(ctx):
+    with open('./data_discord_'+ctx.guild.name+'.json') as f:
         data_discord = json.load(f)
-    with open('./data_link.json') as f:
+    with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
 
     new_discord_ids = []
@@ -93,10 +93,10 @@ async def get_not_linked_discord_list():
     return(msg_list)
 
 
-async def get_left_players():
-    with open('./data_link.json') as f:
+async def get_left_players(ctx):
+    with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
-    with open('./data_clan.json') as f:
+    with open('./data_clan_'+ctx.guild.name+'.json') as f:
         clan_data = json.load(f)
 
     msg = "**The following accounts are linked, but aren't in the clan anymore**\n"

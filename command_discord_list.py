@@ -1,12 +1,12 @@
 import json
 
 
-async def get_discord_list():
-    with open('./data_discord.json') as f:
+async def get_discord_list(ctx):
+    with open('./data_discord_'+ctx.guild.name+'.json') as f:
         discord_data = json.load(f)
 
     num = 1
-    msg1 = '**All users with [💚Members💚] role in discord**' + '\n'
+    msg1 = '**All discord members with the clan member role**' + '\n'
     msg2 = ''
     for player in discord_data:
         if num <= 25:
