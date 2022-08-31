@@ -19,9 +19,12 @@ async def get_waitinglist_list(ctx):
     embed = discord.Embed(title='', description='', color=embed_color)
     embed.title = '**Waiting List**'
     num = 1
-    for name in member_names:
+    if len(member_names) > 0:
+      for name in member_names:
         if num <= 25:
             embed.description += str(num) + '. ' + '**discord_name**: ' + \
                 name + '\n'
         num += 1
+    else:
+      embed.description += 'waiting list is empty, give someone the `@Waiting List` role and try again'
     return(embed)

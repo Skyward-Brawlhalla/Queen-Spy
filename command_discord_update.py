@@ -26,7 +26,7 @@ async def update_discord_data(ctx):
         if role in member.roles:
             account = DiscordAccount(member.id, member.name)
             discord_accounts.append(account.__dict__)
-    with open('./data_discord.json', 'w') as f:
+    with open('./data_discord_' + ctx.guild.name + '.json', 'w') as f:
         json_string = json.dump(discord_accounts, f)
-    msg = '*Updated discord data*'
+    msg = '*Updated ' + ctx.guild.name + 'discord data*'
     return msg
