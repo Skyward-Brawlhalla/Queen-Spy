@@ -33,11 +33,7 @@ embed_color = 0x790eab
 
 
 
-<<<<<<< HEAD
 @has_permissions(ban_members=True)
-=======
-@commands.has_role(required_role)
->>>>>>> main
 @bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
 async def get_status(ctx):    
     # send loading message
