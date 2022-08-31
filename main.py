@@ -3,6 +3,7 @@ import random
 from tkinter import Y
 from command_link_remove import delete_link_from_data
 from command_waitinglist_list import get_waitinglist_list
+import config
 import discord
 import os
 import json
@@ -32,7 +33,11 @@ embed_color = 0x790eab
 
 
 
+<<<<<<< HEAD
 @has_permissions(ban_members=True)
+=======
+@commands.has_role(required_role)
+>>>>>>> main
 @bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
 async def get_status(ctx):    
     # send loading message
