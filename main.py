@@ -1,16 +1,11 @@
 from ast import alias, arg
 import random
-from tkinter import Y
 from command_link_remove import delete_link_from_data
 from command_waitinglist_list import get_waitinglist_list
 import discord
 import os
 import json
-import time
-from ntpath import join
-from unittest import result
 from keep_alive import keep_alive
-from pydoc import classname
 from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions
 from command_link_add import get_add_link
@@ -261,7 +256,7 @@ async def missing_question(ctx, error):
 
 
 # ⬇️ WAITING LIST COMAMNDS ⬇️
-# ⬇️ WAITING LIST COMAMNDS ⬇️ **
+# ⬇️ WAITING LIST COMAMNDS ⬇️
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 
 
