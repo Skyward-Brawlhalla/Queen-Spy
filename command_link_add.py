@@ -90,3 +90,8 @@ async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
         await ctx.send(
             "There was an error while trying to make the link. One of the following ids doesn't exist\n`discord_id: "
             + discord_id + '`\n`brawlhalla_id: ' + brawlhalla_id + '`')
+
+def check(author):
+  def inner_check(message):
+    return message.author == author and message.content == "Hello"
+  return inner_check
