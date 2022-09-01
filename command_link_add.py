@@ -1,10 +1,6 @@
 import json
 import discord
 
-async def get_add_link():
-    msg = '*Added Link*'
-    return msg
-
 class User:
     def __init__(self, brawlhalla_id, brawlhalla_name, discord_id,
                  discord_name):
@@ -44,11 +40,17 @@ async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
             if str(member['brawlhalla_id']) == str(brawlhalla_id):
                 valid_brawlhalla_id = True
                 brawlhalla_name = member['name']
+            elif str(member['brawlhalla_id'])[0:3:1] == str(brawlhalla_id)[0:3:1]:
+                valid_brawlhalla_id = True
+                brawlhalla_name = member['name']
         # check dc id
         with open('./data_discord_' + ctx.guild.name + '.json') as data:
             discord_data = json.load(data)
         for account in discord_data:
             if str(account['id']) == str(discord_id):
+                valid_discord_id = True
+                discord_name = account['name']
+            elif str(account['id'])[0:3:1] == str(discord_id)[0:3:1]:
                 valid_discord_id = True
                 discord_name = account['name']
 
