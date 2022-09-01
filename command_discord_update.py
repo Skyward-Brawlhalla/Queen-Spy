@@ -1,8 +1,6 @@
 import discord
 import json
 
-clan_member_role_name = '💧 Dair 💧'
-
 class DiscordAccount:
     def __init__(self, id, name):
         self.id = id
@@ -10,6 +8,10 @@ class DiscordAccount:
 
 
 async def update_discord_data(ctx):
+    if ctx.guild.name == "Dair":
+      clan_member_role_name = '💧 Dair 💧'
+    elif ctx.guild.name == "Skyward":
+      clan_member_role_name = 'Clan Member'
     guild = ctx.guild
     msg = ''
     num = 1
