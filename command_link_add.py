@@ -1,6 +1,92 @@
 import json
-
+import discord
 
 async def get_add_link():
     msg = '*Added Link*'
     return msg
+
+class User:
+    def __init__(self, brawlhalla_id, brawlhalla_name, discord_id,
+                 discord_name):
+        self.brawlhalla_id = brawlhalla_id
+        self.brawlhalla_name = brawlhalla_name
+        self.discord_id = discord_id
+        self.discord_name = discord_name
+
+async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
+    # first check if the entry already exists
+    with open('./data_link_' + ctx.guild.name + '.json') as data:
+        link_data = json.load(data)
+    new_entry = True
+    for user in link_data:
+        if str(user['brawlhalla_id']) == str(brawlhalla_id):
+            await ctx.send('brawlhalla_id: ' + brawlhalla_id +
+                           ' has already been linked')
+            new_entry = False
+            break
+        if str(user['discord_id']) == str(discord_id):
+            await ctx.send('discord_id: ' + discord_id +
+                           ' has already been linked')
+            new_entry = False
+            break
+
+    brawlhalla_name = 'blank'
+    discord_name = 'blank'
+
+    # check if ids are valid
+    if new_entry == True:
+        valid_brawlhalla_id = False
+        valid_discord_id = False
+        # check clan id
+        with open('./data_clan_' + ctx.guild.name + '.json') as data:
+            clan_data = json.load(data)
+        for member in clan_data['clan']:
+            if str(member['brawlhalla_id']) == str(brawlhalla_id):
+                valid_brawlhalla_id = True
+                brawlhalla_name = member['name']
+        # check dc id
+        with open('./data_discord_' + ctx.guild.name + '.json') as data:
+            discord_data = json.load(data)
+        for account in discord_data:
+            if str(account['id']) == str(discord_id):
+                valid_discord_id = True
+                discord_name = account['name']
+
+    # if entry ids are valid, add it
+    if ((valid_brawlhalla_id == True) and (valid_discord_id == True)
+            and (new_entry == True)):
+
+        await ctx.send('Are you sure you want to add the following link?,')
+        await ctx.send(
+            embed=discord.Embed(description='**brawlhalla_id**: ' +
+                                brawlhalla_id + '\n**brawlhalla_name**: ' +
+                                brawlhalla_name + '\n**discord_id**: ' +
+                                discord_id + '\n**discord_name**: ' +
+                                discord_name,
+                                color=embed_color))
+        await ctx.send('Send `y` to confirm or `n` to cancel.')
+        msg = await bot.wait_for('message', check=check)
+        if msg.content == 'y':
+            user = User(brawlhalla_id, brawlhalla_name, discord_id,
+                        discord_name)
+            users = []
+            users = link_data
+            users.append(user.__dict__)
+            with open('./data_link_' + ctx.guild.name + '.json', 'w') as f:
+                some_data = json.dump(users, f)
+
+            embed = discord.Embed(
+                description='**Added Following Link**\n**brawlhalla_id**: ' +
+                brawlhalla_id + '\n**brawlhalla_name**: ' + brawlhalla_name +
+                '\n**discord_id**: ' + discord_id + '\n**discord_name**: ' +
+                discord_name,
+                color=embed_color)
+            await ctx.send(embed=embed)
+        elif msg.content == 'n':
+            await ctx.send('*Process Canceled*')
+        else:
+            await ctx.send('Invalid answer, process canceled')
+    else:
+        await ctx.send(
+            "There was an error while trying to make the link. One of the following ids doesn't exist\n`discord_id: "
+            + discord_id + '`\n`brawlhalla_id: ' + brawlhalla_id + '`')
