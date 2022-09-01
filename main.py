@@ -1,4 +1,3 @@
-from ast import alias, arg
 import random
 from command_link_remove import delete_link_from_data
 from command_waitinglist_list import get_waitinglist_list
@@ -7,19 +6,18 @@ import discord
 import os
 import json
 from keep_alive import keep_alive
-from discord.ext import commands, tasks
+from discord.ext import commands
 from discord.ext.commands import has_permissions
-from command_link_add import get_add_link
 from command_clan_list import get_clan_list
 from command_discord_list import get_discord_list
 from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get_not_linked_discord_list, get_left_players
 from command_clan_update import update_clan_data
-from command_discord_update import DiscordAccount, update_discord_data
+from command_discord_update import update_discord_data
+from command_status import get_status
 
 # VARIABLES
 intents = discord.Intents().all()
-bot = commands.Bot(command_prefix=['qs', 'Qs'],
-                   intents=intents)
+bot = commands.Bot(command_prefix=['qs', 'Qs'], intents=intents)
 embed_color = 0x790eab
 
 # ⬇️ STATUS COMMANDS ⬇️
@@ -27,69 +25,28 @@ embed_color = 0x790eab
 # ⬇️ STATUS COMMANDS ⬇️
 
 
-
 @has_permissions(ban_members=True)
 @bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
-async def get_status(ctx):    
-    # send loading message
-    msg_loading_data = await ctx.send('_Loading Data..._')
-
-    # update all data
-    await update_discord_data(ctx)
-    update_clan_data(ctx)
-
-    # setup all embeds and their corresponding information
-    msg_list2 = await get_not_linked_brawlhalla_list(ctx)
-    embed_not_linked_brawlhalla_list_first = discord.Embed(
-        description=msg_list2[0], color=embed_color)
-    embed_not_linked_brawlhalla_list_last = discord.Embed(
-        description=msg_list2[1], color=embed_color)
-
-    msg_list3 = await get_not_linked_discord_list(ctx)
-    embed_not_linked_discord_list_first = discord.Embed(
-        description=msg_list3[0], color=embed_color)
-    embed_not_linked_discord_list_last = discord.Embed(
-        description=msg_list3[1], color=embed_color)
-
-    msg_left_players = await get_left_players(ctx)
-    embed_left_players = discord.Embed(description=msg_left_players,
-                                       color=embed_color)
-
-    # send embeds
-    # send not linked brawlhalla accounts
-    await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_first)
-    try:
-        await ctx.channel.send(embed=embed_not_linked_brawlhalla_list_last)
-    except:
-        print('less than 26 entries')
-
-    # send not linked discord accounts
-    await ctx.channel.send(embed=embed_not_linked_discord_list_first)
-    try:
-        await ctx.channel.send(embed=embed_not_linked_discord_list_last)
-    except:
-        print('less than 26 entries')
-
-    # send all players who left the clan
-    await ctx.send(embed=embed_left_players)
-
-    # delete loading message
-    await msg_loading_data.delete()
+async def status(ctx):
+    # get and send status (maybe seperate this so no dependency in file)
+    await get_status(ctx, embed_color)
 
 
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
 # ⬇️ DISCORD COMMANDS ⬇️
-
 
 
 @has_permissions(ban_members=True)
 @bot.command(name='lsdi', aliases=['lsdc'], description='Show all clan members in discord')
 async def show_all_discord_members(ctx):
-    msg = await update_discord_data(ctx)
-    await ctx.send(msg)
+    # update clan data
+    await ctx.send(await update_discord_data(ctx))
 
+    # get discord list
     msg_list = await get_discord_list(ctx)
+
+    # send discord list
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
     await ctx.channel.send(embed=embed1)
@@ -101,13 +58,16 @@ async def show_all_discord_members(ctx):
 # ⬇️ CLAN COMMANDS ⬇️
 
 
-
 @has_permissions(ban_members=True)
 @bot.command(name='lscl', description='Show all ingame clan members')
 async def show_all_clan_members(ctx):
+    # update clan data
     await ctx.channel.send(update_clan_data(ctx))
 
+    # get clan list
     msg_list = await get_clan_list(ctx)
+
+    # send clan list
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
     await ctx.channel.send(embed=embed1)
@@ -135,10 +95,9 @@ async def missing_question(ctx, error):
             'format your message like the following\n`qsrmli brawlhalla_id`')
 
 
-
 @bot.command(name='lsli', description='Show All Links')
 @has_permissions(ban_members=True)
-async def add_link(ctx):
+async def list_link(ctx):
     await ctx.message.delete()
     msg_list = await get_link_list(ctx)
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
@@ -159,12 +118,11 @@ class User:
         self.discord_name = discord_name
 
 
-
 @bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
 async def add_link(ctx, brawlhalla_id, discord_id):
 
     # first check if the entry already exists
-    with open('./data_link_'+ctx.guild.name+'.json') as data:
+    with open('./data_link_' + ctx.guild.name + '.json') as data:
         link_data = json.load(data)
     new_entry = True
     for user in link_data:
@@ -187,14 +145,14 @@ async def add_link(ctx, brawlhalla_id, discord_id):
         valid_brawlhalla_id = False
         valid_discord_id = False
         # check clan id
-        with open('./data_clan_'+ctx.guild.name+'.json') as data:
+        with open('./data_clan_' + ctx.guild.name + '.json') as data:
             clan_data = json.load(data)
         for member in clan_data['clan']:
             if str(member['brawlhalla_id']) == str(brawlhalla_id):
                 valid_brawlhalla_id = True
                 brawlhalla_name = member['name']
         # check dc id
-        with open('./data_discord_'+ctx.guild.name+'.json') as data:
+        with open('./data_discord_' + ctx.guild.name + '.json') as data:
             discord_data = json.load(data)
         for account in discord_data:
             if str(account['id']) == str(discord_id):
@@ -221,7 +179,7 @@ async def add_link(ctx, brawlhalla_id, discord_id):
             users = []
             users = link_data
             users.append(user.__dict__)
-            with open('./data_link_'+ctx.guild.name+'.json', 'w') as f:
+            with open('./data_link_' + ctx.guild.name + '.json', 'w') as f:
                 some_data = json.dump(users, f)
 
             embed = discord.Embed(
@@ -264,7 +222,9 @@ async def missing_question(ctx, error):
 @has_permissions(ban_members=True)
 @bot.command(name='lswa', description='Shows Waiting List')
 async def get_waiting_list(ctx):
+    # delete command message
     await ctx.message.delete()
+    # get and send waiting list
     await ctx.channel.send(embed=await get_waitinglist_list(ctx=ctx))
 
 
@@ -281,13 +241,13 @@ async def on_ready():
 
 
 @bot.command(name='say')
-async def add_discord_id(ctx, arg):
+async def say(ctx, arg):
     await ctx.message.delete()
     await ctx.channel.send(arg)
 
 
 @bot.command(name='meme')
-async def add_discord_id(ctx):
+async def meme(ctx):
     memes = [
         'https://media.discordapp.net/attachments/973594560368373820/991113816299548753/unknown.png',
         'https://cdn.discordapp.com/attachments/973594560368373820/991114373366034512/unknown.png',
@@ -298,11 +258,14 @@ async def add_discord_id(ctx):
     await ctx.channel.send(meme)
 
 
-@bot.command(name='doc', aliases=['docs'], description="Send you to the GitHub page")
+@bot.command(name='doc',
+             aliases=['docs'],
+             description="Send you to the GitHub page")
 async def doc(ctx):
     await ctx.channel.send(
         'Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
     )
+
 
 keep_alive()
 bot.run(os.environ['BOT_KEY'])
