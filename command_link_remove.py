@@ -5,7 +5,7 @@ import discord
 embed_color = 0x790eab
 
 
-async def delete_link_from_data(brawlhalla_id, bot, ctx):
+async def remove_link(brawlhalla_id, bot, ctx):
     with open('./data_link_'+ctx.guild.name+'.json') as f:
         link_data = json.load(f)
     num = 0
