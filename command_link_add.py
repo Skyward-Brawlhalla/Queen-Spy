@@ -41,6 +41,7 @@ async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
                 valid_brawlhalla_id = True
                 brawlhalla_name = member['name']
             elif str(member['brawlhalla_id'])[0:3:1] == str(brawlhalla_id)[0:3:1]:
+                brawlhalla_id = str(member['brawlhalla_id'])
                 valid_brawlhalla_id = True
                 brawlhalla_name = member['name']
         # check dc id
@@ -51,6 +52,7 @@ async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
                 valid_discord_id = True
                 discord_name = account['name']
             elif str(account['id'])[0:3:1] == str(discord_id)[0:3:1]:
+                discord_id = str(account['id'])
                 valid_discord_id = True
                 discord_name = account['name']
 
