@@ -108,10 +108,12 @@ type `y` to confirm and `n` to cancel.
 
 now type `qslsli` to get the list with links. You'll see the new link is added.
 
-**Pro tip: you can type the first 3 numbers instead of the whole ID. So instead of** `qsadli 7364605 413070742591373314` **you can also type** `qsadli 736 413`
+**Pro tip: you can type the first 3 numbers instead of the whole ID. So instead of** `qsadli 7364605563 413070742591373314` **you can also type** `qsadli 736 413`
 
 ## Remove Link
 `qsrmli brawlhalla_id` with this command you can remove an existing link, just like adding a link, it will ask for confirmation. To see all brawlhalla ids of the links use the command `qslsli`.
+
+**Pro tip: you can type the first 4 numbers instead of the whole ID. So instead of** `qsrmli 7364605563 ` **you can also type** `qsrmli 7364`
 
 ## Get Link List
 `qslsli` shows a list of all current links between discord and brawlhalla.
