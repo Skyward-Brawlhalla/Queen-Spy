@@ -9,12 +9,12 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Get Status](#get-status)
   - [Add Link](#add-link)
   - [Remove Link](#remove-link)
+  - [Update Links](#update-links)
+  - [Update Clan](#update-clan)
   - [Get Link List](#get-link-list)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
   - [Get Waiting List](#get-waiting-list)
-  - [Add someone to waiting list](#add-someone-to-waiting-list)
-  - [Remove someone from waiting list](#remove-someone-from-waiting-list)
 
 # Prefix
 Both `qs` and `Qs` work.
@@ -41,7 +41,7 @@ a player named Emma left the clan, when we run `qstatus`, Queen Spy points out a
 
 ![image](https://user-images.githubusercontent.com/74303221/176177804-ee6c8d6f-f617-4ee6-9447-86d72c4f56ed.png)
 
-This means we can remove him from the discord adn remove the link.
+This means we can remove him from the discord and remove the link.
 
 ![image](https://user-images.githubusercontent.com/74303221/176178969-11474ebb-f330-42f0-b2e4-9aa916855257.png)
 
@@ -62,13 +62,13 @@ A command consists of 2 letters after each other multiple times.
 
 **Example 1**
 
-`qsupcl` stands for 
+`qsadli` stands for 
 
 - qs -> queen spy
 
-- up -> update
+- ad -> add
 
-- cl -> clan
+- li -> link
 
 **Example 2**
 
@@ -110,11 +110,25 @@ type `y` to confirm and `n` to cancel.
 
 now type `qslsli` to get the list with links. You'll see the new link is added.
 
+**Pro tip: you can type the first 3 numbers instead of the whole ID. So instead of** `qsadli 7364605563 413070742591373314` **you can also type** `qsadli 736 413`
+
 ## Remove Link
 `qsrmli brawlhalla_id` with this command you can remove an existing link, just like adding a link, it will ask for confirmation. To see all brawlhalla ids of the links use the command `qslsli`.
 
+**Pro tip: you can type the first 4 numbers instead of the whole ID. So instead of** `qsrmli 7364605563 ` **you can also type** `qsrmli 7364`
+
+# Update Links
+`qsupli` manually updates all links in the link list. Also does this command point out people who changed their name, see example below.
+
+![image](https://user-images.githubusercontent.com/74303221/188316637-a2fbdbce-5cd3-41a6-b371-cda2792dd6f1.png)
+
+This command runs automatically when running `qslsli`
+
+# Update Clan
+`qsupcl` manually updates clan data. This command automatically runs when running `qslscl`
+
 ## Get Link List
-`qslsli` shows a list of all current links between discord and brawlhalla.
+`qslsli` shows a list of all current links between discord and brawlhalla. (This command automatically runs `qsupli`)
 
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
@@ -123,15 +137,4 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 `qslsdc` / `qslsdi` returns a list of everyone in the discord with the `@Clan Member` role.
 
 ## Get Waiting List
-`qslsw` / `qslswa` returns a list of everyone in the discord with the `@Waiting List` role.
-
-## Add someone to waiting list
-`qsawa` / `qsadwa` / `qsaddwa` adds someone to the waiting list. You can check it with `qstatus`
-
-### Example
-`qsadwa discord_id` this is what the command looks like with the parameters
-
-`qsadwa 413070742591373314` adds my discord account to the waiting list, keep in mind that you can only add people to the waiting list that actually have the `@Waiting List` role
-
-## Remove someone from waiting list
-`qsrmwa discord_id` removes someone off the list, after removing you can check with `qstatus`
+`qslsw` / `qslswa` returns a list of everyone in the discord server with the `@Waiting List` role.

@@ -1,3 +1,5 @@
+# merge github and release
+
 import random
 from command_link_remove import remove_link
 from command_waitinglist_list import get_waitinglist_list
@@ -102,6 +104,9 @@ async def missing_question(ctx, error):
 @bot.command(name='lsli', description='Show All Links')
 @has_permissions(ban_members=True)
 async def list_link(ctx):
+    # update link list
+    embed_name_changes = update_links(ctx, embed_color)
+  
     # get link list
     msg_list = await get_link_list(ctx)
   
@@ -113,6 +118,9 @@ async def list_link(ctx):
         await ctx.channel.send(embed=embed2)
     except:
         print('less than 26 entries')
+
+    # send name changes
+    await ctx.channel.send(embed=embed_name_changes)
 
 
 @bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
@@ -127,10 +135,9 @@ async def missing_question(ctx, error):
             'format your message like the following\n`qsadli brawlhalla_id discord_id`'
         )
 
-@bot.command(name='upli')
+@bot.command(name='upli', description='manually updates all old brawlhalla names in links')
 async def upli(ctx):
-    update_links(ctx)
-    await ctx.channel.send('Updated Dair Link Data')
+    await ctx.channel.send(embed=update_links(ctx, embed_color))
 
 
 # ⬇️ WAITING LIST COMAMNDS ⬇️
