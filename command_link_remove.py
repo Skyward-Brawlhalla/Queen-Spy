@@ -10,7 +10,7 @@ async def remove_link(brawlhalla_id, bot, ctx):
         link_data = json.load(f)
     num = 0
     for link in link_data:
-        if str(link['brawlhalla_id']) == str(brawlhalla_id) or str(link['brawlhalla_id'])[0:4:1] == str(brawlhalla_id)[0:4:1]:
+        if str(link['brawlhalla_id']) == str(brawlhalla_id) or str(link['brawlhalla_id'])[0:3:1] == str(brawlhalla_id)[0:3:1]:
             await ctx.send('Are you sure you want to delete the following link?')
             embed1 = discord.Embed(
                 description='**brawlhalla_id**: ' + str(link_data[num]['brawlhalla_id']) + '\n' +

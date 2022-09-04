@@ -12,6 +12,8 @@ async def update_discord_data(ctx):
       clan_member_role_name = '💧 Dair 💧'
     elif ctx.guild.name == "Skyward":
       clan_member_role_name = 'Clan Member'
+    elif ctx.guild.name == "🌸Blossom🌸":
+      clan_member_role_name = "Blossom"
     guild = ctx.guild
     msg = ''
     num = 1

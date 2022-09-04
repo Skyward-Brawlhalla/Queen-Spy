@@ -14,6 +14,8 @@ from command_clan_update import update_clan_data
 from command_discord_update import update_discord_data
 from command_status import get_status
 from command_link_add import add_link
+from command_link_update import update_links
+#from disuniter import keepAlive
 
 # VARIABLES
 intents = discord.Intents().all()
@@ -73,6 +75,9 @@ async def show_all_clan_members(ctx):
     await ctx.channel.send(embed=embed1)
     await ctx.channel.send(embed=embed2)
 
+@bot.command(name='upcl', description='Manually updates clan data')
+async def qsupcl(ctx):
+  await ctx.channel.send(update_clan_data(ctx))
 
 # ⬇️ LINKING COMMANDS ⬇️
 # ⬇️ LINKING COMMANDS ⬇️
@@ -122,6 +127,11 @@ async def missing_question(ctx, error):
             'format your message like the following\n`qsadli brawlhalla_id discord_id`'
         )
 
+@bot.command(name='upli')
+async def upli(ctx):
+    update_links(ctx)
+    await ctx.channel.send('Updated Dair Link Data')
+
 
 # ⬇️ WAITING LIST COMAMNDS ⬇️
 # ⬇️ WAITING LIST COMAMNDS ⬇️
@@ -167,9 +177,7 @@ async def meme(ctx):
     await ctx.channel.send(meme)
 
 
-@bot.command(name='doc',
-             aliases=['docs'],
-             description="Send you to the GitHub page")
+@bot.command(name='doc', aliases=['docs'], description="Send you to the GitHub page")
 async def doc(ctx):
     await ctx.channel.send(
         'Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
@@ -178,3 +186,4 @@ async def doc(ctx):
 
 keep_alive()
 bot.run(os.environ['BOT_KEY'])
+#keepAlive(bot)
