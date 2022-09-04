@@ -9,6 +9,8 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Get Status](#get-status)
   - [Add Link](#add-link)
   - [Remove Link](#remove-link)
+  - [Update Links](#update-links)
+  - [Update Clan](#update-clan)
   - [Get Link List](#get-link-list)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
