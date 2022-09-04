@@ -1,4 +1,5 @@
 import json
+import discord
 
 # todo
 # get link list data
@@ -13,7 +14,7 @@ class User:
         self.discord_id = discord_id
         self.discord_name = discord_name
 
-def update_links(ctx):
+def update_links(ctx, embed_color):
   # get link list
   with open('./data_link_'+ctx.guild.name+'.json') as f1:
     link_data = json.load(f1)
@@ -21,23 +22,26 @@ def update_links(ctx):
   with open('./data_clan_'+ctx.guild.name+'.json') as f2:
     clan_data = json.load(f2)
 
+  embed = discord.Embed(title='Name Changes', description='', color=embed_color)
+  
   link_data_new = []  
   # in link list replace clan member name with clan member data names
   for account in link_data:
     for clan_member in clan_data['clan']:
       if str(account['brawlhalla_id']) == str(clan_member['brawlhalla_id']):
         if account['brawlhalla_name'] != clan_member['name']:
-          print('old name: ' + account['brawlhalla_name'])
-          print('new name: ' + clan_member['name'])
+          embed.description += '**old_name**: ' + account['brawlhalla_name']+'\n'
+          embed.description += '**new_name**: ' + clan_member['name'] + '\n'
+          embed.description += '\n'
           account['brawlhalla_name'] = clan_member['name']
-          #link_data_new.append(account)
         break
-    #link_data_new.append(account)
-  #print(link_data_new)
   link_data_new = link_data
+  # overwrite old data with new data
   with open('./data_link_' + ctx.guild.name + '.json', 'w') as f:
     json.dump(link_data_new, f)
-  msg = 'Updated Dair Link Data' 
-  return msg
+  # check if embed is empty
+  if len(embed.description) == 0:
+    embed.description += 'there were no new name changes'
+  return embed
     
   
