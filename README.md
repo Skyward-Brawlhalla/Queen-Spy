@@ -115,8 +115,18 @@ now type `qslsli` to get the list with links. You'll see the new link is added.
 
 **Pro tip: you can type the first 4 numbers instead of the whole ID. So instead of** `qsrmli 7364605563 ` **you can also type** `qsrmli 7364`
 
+# Update Links
+`qsupli` manually updates all links in the link list. Also does this command point out people who changed their name, see example below.
+
+![image](https://user-images.githubusercontent.com/74303221/188316637-a2fbdbce-5cd3-41a6-b371-cda2792dd6f1.png)
+
+This command runs automatically when running `qslsli`
+
+# Update Clan
+`qsupcl` manually updates clan data. This command automatically runs when running `qslscl`
+
 ## Get Link List
-`qslsli` shows a list of all current links between discord and brawlhalla.
+`qslsli` shows a list of all current links between discord and brawlhalla. (This command automatically runs `qsupli`)
 
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
