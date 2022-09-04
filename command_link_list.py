@@ -1,6 +1,10 @@
 import json
 import discord
 
+# todo
+# get all clan member names
+# replace all current clan member names in link list
+
 
 async def get_link_list(ctx):
     with open('./data_link_'+ctx.guild.name+'.json') as f:

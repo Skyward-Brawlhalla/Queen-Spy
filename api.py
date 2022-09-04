@@ -9,6 +9,7 @@ skyward_clan_id = "84648"
 lilly_clan_id = '864398'
 poopy_blender_clan_id = '1923622'
 dair_clan_id = '1357965'
+blossom_clan_id = '1788477'
 
 
 def clan_request(ctx):
@@ -21,3 +22,5 @@ def set_using_clan(ctx):
     return skyward_clan_id
   elif ctx.guild.name == "Dair":
     return dair_clan_id
+  elif ctx.guild.name == "🌸Blossom🌸":
+    return blossom_clan_id
