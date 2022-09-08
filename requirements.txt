@@ -1,7 +1,1 @@
 setuptools
-random.py
-discord
-os
-requests
-time
-json
