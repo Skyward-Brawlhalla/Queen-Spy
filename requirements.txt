@@ -1,1 +1,7 @@
 setuptools==0.7.3
+random
+discord
+os
+requests
+time
+json
