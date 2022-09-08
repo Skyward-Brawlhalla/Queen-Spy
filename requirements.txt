@@ -1,4 +1,4 @@
-setuptools==0.7.3
+setuptools
 random
 discord
 os
