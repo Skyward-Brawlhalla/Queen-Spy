@@ -28,8 +28,11 @@ embed_color = 0x790eab
 # ⬇️ STATUS COMMANDS ⬇️
 
 
-@has_permissions(ban_members=True)
-@bot.command(name='status', aliases=['tatus', 'st', 's'], description='Shows new discord members, new clan members and if people left the clan')
+@bot.command(
+    name='status',
+    aliases=['tatus', 'st', 's'],
+    description=
+    'Shows new discord members, new clan members and if people left the clan')
 async def status(ctx):
     # get and send status (maybe seperate this so no dependency in file)
     await get_status(ctx, embed_color)
@@ -41,14 +44,16 @@ async def status(ctx):
 
 
 @has_permissions(ban_members=True)
-@bot.command(name='lsdi', aliases=['lsdc'], description='Show all clan members in discord')
+@bot.command(name='lsdi',
+             aliases=['lsdc'],
+             description='Show all clan members in discord')
 async def show_all_discord_members(ctx):
     # update clan data
     await ctx.send(await update_discord_data(ctx))
-  
+
     # get discord list
     msg_list = await get_discord_list(ctx)
-  
+
     # send discord list
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
@@ -76,17 +81,19 @@ async def show_all_clan_members(ctx):
     await ctx.channel.send(embed=embed1)
     await ctx.channel.send(embed=embed2)
 
+
 @bot.command(name='upcl', description='Manually updates clan data')
 async def qsupcl(ctx):
-  await ctx.channel.send(update_clan_data(ctx))
+    await ctx.channel.send(update_clan_data(ctx))
+
 
 # ⬇️ LINKING COMMANDS ⬇️
 # ⬇️ LINKING COMMANDS ⬇️
 # ⬇️ LINKING COMMANDS ⬇️
 
 
-@bot.command(name='rmli', description='Remove a discord-brawlhalla link')
 @has_permissions(ban_members=True)
+@bot.command(name='rmli', description='Remove a discord-brawlhalla link')
 async def rmli(ctx, brawlhalla_id):
     # remove link from link list
     await remove_link(brawlhalla_id, bot, ctx)
@@ -105,10 +112,10 @@ async def missing_question(ctx, error):
 async def list_link(ctx):
     # update link list
     embed_name_changes = update_links(ctx, embed_color)
-  
+
     # get link list
     msg_list = await get_link_list(ctx)
-  
+
     # send link list
     embed1 = discord.Embed(description=msg_list[0], color=embed_color)
     embed2 = discord.Embed(description=msg_list[1], color=embed_color)
@@ -122,10 +129,15 @@ async def list_link(ctx):
     await ctx.channel.send(embed=embed_name_changes)
 
 
-@bot.command(name='adli', aliases=['addli', 'ali'], description='Create a link between a discord and brawlhalla account')
+@has_permissions(ban_members=True)
+@bot.command(
+    name='adli',
+    aliases=['addli', 'ali'],
+    description='Create a link between a discord and brawlhalla account')
 async def qsadli(ctx, brawlhalla_id, discord_id):
-  # adds a link to link list
-  await add_link(bot, ctx, brawlhalla_id, discord_id, embed_color)
+    # adds a link to link list
+    await add_link(bot, ctx, brawlhalla_id, discord_id, embed_color)
+
 
 @qsadli.error
 async def missing_question(ctx, error):
@@ -134,7 +146,9 @@ async def missing_question(ctx, error):
             'format your message like the following\n`qsadli brawlhalla_id discord_id`'
         )
 
-@bot.command(name='upli', description='manually updates all old brawlhalla names in links')
+
+@bot.command(name='upli',
+             description='manually updates all old brawlhalla names in links')
 async def upli(ctx):
     await ctx.channel.send(embed=update_links(ctx, embed_color))
 
@@ -183,7 +197,9 @@ async def meme(ctx):
     await ctx.channel.send(meme)
 
 
-@bot.command(name='doc', aliases=['docs'], description="Send you to the GitHub page")
+@bot.command(name='doc',
+             aliases=['docs'],
+             description="Send you to the GitHub page")
 async def doc(ctx):
     await ctx.channel.send(
         'Queen Spy Documentation -> https://github.com/CrossyChainsaw/Queen-Spy'
