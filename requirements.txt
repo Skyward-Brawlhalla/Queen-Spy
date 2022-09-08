@@ -1,5 +1,5 @@
 setuptools
-random
+random.py
 discord
 os
 requests
