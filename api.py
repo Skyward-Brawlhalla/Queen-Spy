@@ -1,8 +1,6 @@
-from distutils.command.config import config
 import os
 import requests
 import time
-import config
 
 # VARIABLES
 skyward_clan_id = "84648"

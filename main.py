@@ -6,19 +6,17 @@ from command_waitinglist_list import get_waitinglist_list
 import config
 import discord
 import os
-import json
 from keep_alive import keep_alive
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from command_clan_list import get_clan_list
 from command_discord_list import get_discord_list
-from command_link_list import get_link_list, get_not_linked_brawlhalla_list, get_not_linked_discord_list, get_left_players
+from command_link_list import get_link_list
 from command_clan_update import update_clan_data
 from command_discord_update import update_discord_data
 from command_status import get_status
 from command_link_add import add_link
 from command_link_update import update_links
-#from disuniter import keepAlive
 
 # VARIABLES
 intents = discord.Intents().all()

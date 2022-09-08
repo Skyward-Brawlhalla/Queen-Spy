@@ -1,11 +1,7 @@
-import json
-from unicodedata import name
 import discord
 
-from command_discord_update import DiscordAccount
-
+# VARIABLES
 embed_color = 0x790eab
-
 
 async def get_waitinglist_list(ctx):
     skyward_server = ctx.guild
