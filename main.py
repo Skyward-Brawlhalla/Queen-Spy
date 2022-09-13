@@ -3,7 +3,6 @@
 import random
 from command_link_remove import remove_link
 from command_waitinglist_list import get_waitinglist_list
-import config
 import discord
 import os
 from keep_alive import keep_alive
@@ -208,4 +207,3 @@ async def doc(ctx):
 
 keep_alive()
 bot.run(os.environ['BOT_KEY'])
-#keepAlive(bot)
