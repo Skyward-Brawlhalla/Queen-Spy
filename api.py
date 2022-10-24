@@ -8,7 +8,7 @@ lilly_clan_id = '864398'
 poopy_blender_clan_id = '1923622'
 dair_clan_id = '1357965'
 blossom_clan_id = '1788477'
-Iratus_id = '1998475'
+pandation_clan_id = '1702413'
 
 
 def clan_request(ctx):
@@ -23,5 +23,5 @@ def set_using_clan(ctx):
     return dair_clan_id
   elif ctx.guild.name == "🌸Blossom🌸":
     return blossom_clan_id
-  elif ctx.guild.name == "Iratus niggas":
-    return Iratus_id
+  elif ctx.guild.name == "Pandation":
+    return pandation_clan_id 

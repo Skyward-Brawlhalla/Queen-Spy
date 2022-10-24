@@ -14,8 +14,8 @@ async def update_discord_data(ctx):
       clan_member_role_name = 'Clan Member'
     elif ctx.guild.name == "🌸Blossom🌸":
       clan_member_role_name = "Blossom"
-    elif ctx.guild.name == "Iratus niggas":
-      clan_member_role_name = "Clan Member"
+    elif ctx.guild.name == "Pandation":
+      clan_member_role_name = "Pandation"
     guild = ctx.guild
     msg = ''
     num = 1
@@ -32,7 +32,7 @@ async def update_discord_data(ctx):
         if role in member.roles:
             account = DiscordAccount(member.id, member.name)
             discord_accounts.append(account.__dict__)
-    with open('./data_discord_' + ctx.guild.name + '.json', 'w') as f:
+    with open('./data/data_discord_' + ctx.guild.name + '.json', 'w') as f:
         json_string = json.dump(discord_accounts, f)
     msg = '*Updated ' + ctx.guild.name + 'discord data*'
     return msg
