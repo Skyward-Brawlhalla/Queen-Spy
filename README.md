@@ -12,6 +12,7 @@ In short, Queen Spy manages the links between brawlhalla and discord accounts. T
   - [Update Links](#update-links)
   - [Update Clan](#update-clan)
   - [Get Link List](#get-link-list)
+    - [Get Name Changes](#get-name-changes)
   - [Get Clan List](#get-clan-list)
   - [Get Discord List](#get-discord-list)
   - [Get Waiting List](#get-waiting-list)
@@ -129,6 +130,11 @@ This command runs automatically when running `qslsli`
 
 ## Get Link List
 `qslsli` shows a list of all current links between discord and brawlhalla. (This command automatically runs `qsupli`)
+
+### Get Name Changes
+As if right now the command `qslsli` also shows all name changes. Here is an example.
+
+![image](https://user-images.githubusercontent.com/74303221/190578712-3967570f-8fd4-4e84-bc70-2c844a7a24b5.png)
 
 ## Get Clan List
 `qslscl` return a list of all clan members in game.
