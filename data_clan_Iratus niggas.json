@@ -1,3 +1,85 @@
-
-{"clan_id": 1998475, "clan_name": "Iratus", "clan_create_date": 1662159711, "clan_xp": "44727", "clan": [{"brawlhalla_id": 28054305, "name": "\u00e4\u00b8\u0082gishide", "rank": "Leader", "join_date": 1662159807, "xp": 5024}, {"brawlhalla_id": 61355963, "name": "\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096", "rank": "Officer", "join_date": 1662160170, "xp": 6111}, {"brawlhalla_id": 9316238, "name": "Serendipity", "rank": "Officer", "join_date": 1662160201, "xp": 4195}, {"brawlhalla_id": 33893717, "name": "Professional_gamer09(italian)", "rank": "Member", "join_date": 1662160289, "xp": 4563}, {"brawlhalla_id": 6261062, "name": "I am a dwarf", "rank": "Member", "join_date": 1662160748, "xp": 1585}, {"brawlhalla_id": 1509948, "name": "Just k0sy", "rank": "Member", "join_date": 1662164345, "xp": 2052}, {"brawlhalla_id": 6244176, "name": "Madara Uchiha", "rank": "Member", "join_date": 1662226618, "xp": 14082}, {"brawlhalla_id": 5448743, "name": "iSwiits", "rank": "Member", "join_date": 1662471087, "xp": 1285}, {"brawlhalla_id": 5920747, "name": "\u00ed\u0095\u0098\u00eb\u008a\u0098 | Sky", "rank": "Member", "join_date": 1662560362, "xp": 805}, {"brawlhalla_id": 83490089, "name": "KurdiAras", "rank": "Member", "join_date": 1662767963, "xp": 57}, {"brawlhalla_id": 83488873, "name": "LEGEND_Hamudi", "rank": "Member", "join_date": 1662767974, "xp": 57}]}
-
+{
+    "clan_id": 1998475,
+    "clan_name": "Iratus",
+    "clan_create_date": 1662159711,
+    "clan_xp": "44727",
+    "clan": [
+        {
+            "brawlhalla_id": 28054305,
+            "name": "\u00e4\u00b8\u0082gishide",
+            "rank": "Leader",
+            "join_date": 1662159807,
+            "xp": 5024
+        },
+        {
+            "brawlhalla_id": 61355963,
+            "name": "\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096\u00e3\u0084\u0096",
+            "rank": "Officer",
+            "join_date": 1662160170,
+            "xp": 6111
+        },
+        {
+            "brawlhalla_id": 9316238,
+            "name": "Serendipity",
+            "rank": "Officer",
+            "join_date": 1662160201,
+            "xp": 4195
+        },
+        {
+            "brawlhalla_id": 33893717,
+            "name": "Professional_gamer09(italian)",
+            "rank": "Member",
+            "join_date": 1662160289,
+            "xp": 4563
+        },
+        {
+            "brawlhalla_id": 6261062,
+            "name": "I am a dwarf",
+            "rank": "Member",
+            "join_date": 1662160748,
+            "xp": 1585
+        },
+        {
+            "brawlhalla_id": 1509948,
+            "name": "Just k0sy",
+            "rank": "Member",
+            "join_date": 1662164345,
+            "xp": 2052
+        },
+        {
+            "brawlhalla_id": 6244176,
+            "name": "Madara Uchiha",
+            "rank": "Member",
+            "join_date": 1662226618,
+            "xp": 14082
+        },
+        {
+            "brawlhalla_id": 5448743,
+            "name": "iSwiits",
+            "rank": "Member",
+            "join_date": 1662471087,
+            "xp": 1285
+        },
+        {
+            "brawlhalla_id": 5920747,
+            "name": "\u00ed\u0095\u0098\u00eb\u008a\u0098 | Sky",
+            "rank": "Member",
+            "join_date": 1662560362,
+            "xp": 805
+        },
+        {
+            "brawlhalla_id": 83490089,
+            "name": "KurdiAras",
+            "rank": "Member",
+            "join_date": 1662767963,
+            "xp": 57
+        },
+        {
+            "brawlhalla_id": 83488873,
+            "name": "LEGEND_Hamudi",
+            "rank": "Member",
+            "join_date": 1662767974,
+            "xp": 57
+        }
+    ]
+}
