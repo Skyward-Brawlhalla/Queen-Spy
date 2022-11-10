@@ -1,16 +1,9 @@
 import json
 import discord
+from classes.User import User
 
 h = 'hello time'
 g = 'swagg moment'
-
-class User:
-    def __init__(self, brawlhalla_id, brawlhalla_name, discord_id,
-                 discord_name):
-        self.brawlhalla_id = brawlhalla_id
-        self.brawlhalla_name = brawlhalla_name
-        self.discord_id = discord_id
-        self.discord_name = discord_name
 
 async def add_link(bot, ctx, brawlhalla_id, discord_id, embed_color):
     # first check if the entry already exists

@@ -1,10 +1,6 @@
 import discord
 import json
-
-class DiscordAccount:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+from classes.DiscordAccount import DiscordAccount
 
 
 async def update_discord_data(ctx):
