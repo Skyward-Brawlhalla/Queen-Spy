@@ -5,7 +5,7 @@ from commands.command_link_remove import remove_link
 from commands.command_waitinglist_list import get_waitinglist_list
 import discord
 import os
-from keep_alive import keep_alive
+from modules.keep_alive import keep_alive
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from commands.command_clan_list import get_clan_list
@@ -13,7 +13,6 @@ from commands.command_discord_list import get_discord_list
 from commands.command_link_list import get_link_list
 from commands.command_clan_update import update_clan_data
 from commands.command_discord_update import update_discord_data
-
 from commands.command_status import get_status
 from commands.command_link_add import add_link
 from commands.command_link_update import update_links

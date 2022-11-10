@@ -6,14 +6,6 @@ import discord
 # get clan member data
 # in link list replace clan member name with clan member data names
 
-class User:
-    def __init__(self, brawlhalla_id, brawlhalla_name, discord_id,
-                 discord_name):
-        self.brawlhalla_id = brawlhalla_id
-        self.brawlhalla_name = brawlhalla_name
-        self.discord_id = discord_id
-        self.discord_name = discord_name
-
 def update_links(ctx, embed_color):
   # get link list
   with open('./data/data_link_'+ctx.guild.name+'.json') as f1:

@@ -1,5 +1,5 @@
 import json
-from api import clan_request
+from modules.api import clan_request
 
 
 def update_clan_data(ctx):
