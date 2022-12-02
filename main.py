@@ -16,6 +16,7 @@ from commands.command_discord_update import update_discord_data
 from commands.command_status import get_status
 from commands.command_link_add import add_link
 from commands.command_link_update import update_links
+from modules.assign import assign_all
 
 # VARIABLES
 intents = discord.Intents().all()
@@ -169,6 +170,11 @@ async def get_waiting_list(ctx):
 # ⬇️ OTHER COMMANDS ⬇️
 # ⬇️ OTHER COMMANDS ⬇️
 # ⬇️ OTHER COMMANDS ⬇️
+
+@has_permissions(ban_members=True)
+@bot.command(name='assignall')
+async def assignall(ctx, role_name):
+  await assign_all(ctx, role_name)
 
 
 @bot.event
